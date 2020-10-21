@@ -10,7 +10,7 @@ export class HelpService {
   Global commands:
 
     ${green('google [subcommand]')} ........ Manage Google accounts.
-    ${green('database [subcommand]')} ............ Manage the database.
+    ${green('database [subcommand]')} ...... Manage the database.
     ${green('start [name] [resource]')} .... Start a new project.
     ${green('docs')} ....................... Open the documentation.
     ${green('update')} ..................... Check and install update.
@@ -48,7 +48,7 @@ export class HelpService {
 
     ${green('google [subcommand]')} ........ Manage Google accounts.
     ${green('project [subcommand]')} ....... Project general tasks.
-    ${green('database [subcommand]')} ............ Manage the database.
+    ${green('database [subcommand]')} ...... Manage the database.
 
   Google sub-commands:
   ${this.googleHelp()}
