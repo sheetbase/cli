@@ -50,13 +50,13 @@ export class HelpService {
     ${green('project [subcommand]')} ....... Project general tasks.
     ${green('database [subcommand]')} ............ Manage the database.
 
-  Google commands:
+  Google sub-commands:
   ${this.googleHelp()}
 
-  Project commands:
+  Project sub-commands:
   ${this.projectHelp()}
 
-  Database commands:
+  Database sub-commands:
   ${this.databaseHelp()}`
     );
   }

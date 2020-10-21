@@ -41,7 +41,7 @@ export class Cli {
     this.cliModule = new CliModule();
     this.unknownCommand = new UnknownCommand(this.cliModule.terminalService);
     this.docsCommand = new DocsCommand(this.cliModule.messageService);
-    this.updateCommand = new UpdateCommand();
+    this.updateCommand = new UpdateCommand(this.cliModule.terminalService);
     this.helpCommand = new HelpCommand(this.cliModule.helpService);
   }
 
@@ -67,11 +67,12 @@ export class Cli {
 
     // update
     (() => {
-      const [command, description] = this.updateCommandDef;
+      const [command, description, yesOpt] = this.updateCommandDef;
       commander
         .command(command)
         .description(description)
-        .action(() => this.updateCommand.run());
+        .option(...yesOpt)
+        .action(options => this.updateCommand.run(this.version, options));
     })();
 
     // help
@@ -79,6 +80,7 @@ export class Cli {
       const [command, description, detailOpt] = this.helpCommandDef;
       commander
         .command(command)
+        .alias('h')
         .description(description)
         .option(...detailOpt)
         .action(options => this.helpCommand.run(this.version, options));
@@ -100,7 +102,7 @@ export class Cli {
 
     // updating
     if (process.argv.slice(2)[0] !== 'update') {
-      this.updateCommand.checkUpdate();
+      this.updateCommand.checkUpdate(this.version);
     }
 
     return commander;
