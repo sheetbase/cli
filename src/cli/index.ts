@@ -1,24 +1,48 @@
-import {red} from 'chalk';
 import {Command} from 'commander';
+import {green} from 'chalk';
 import {Lib as CliModule} from '../lib/index';
-import {DocsCommand} from './commands/docs.command';
+
 import {UnknownCommand} from './commands/unknown.command';
+import {DocsCommand} from './commands/docs.command';
+import {UpdateCommand} from './commands/update.command';
+import {HelpCommand} from './commands/help.command';
 
 export class Cli {
+  private version: string;
   private cliModule: CliModule;
-  docsCommand: DocsCommand;
   unknownCommand: UnknownCommand;
+  docsCommand: DocsCommand;
+  updateCommand: UpdateCommand;
+  helpCommand: HelpCommand;
 
   commander = ['sheetbase', 'Official CLI for working with Sheetbase.'];
 
-  docsCommandDef: CommandDef = ['docs', 'Command description.'];
+  unknownCommandDef: CommandDef = [
+    '*',
+    'Any other command will run: `npm run [cmd]`.',
+  ];
 
-  unknownCommandDef: CommandDef = ['unknown', 'Command description.'];
+  docsCommandDef: CommandDef = ['docs', 'Open documentation.'];
+
+  updateCommandDef: CommandDef = [
+    'update',
+    'Update the CLI to the latest version.',
+    ['-y, --yes', 'Do update now.'],
+  ];
+
+  helpCommandDef: CommandDef = [
+    'help',
+    'Display help.',
+    ['-d, --detail', 'Show detail help.'],
+  ];
 
   constructor() {
+    this.version = require('../../package.json').version;
     this.cliModule = new CliModule();
-    this.docsCommand = new DocsCommand();
-    this.unknownCommand = new UnknownCommand();
+    this.unknownCommand = new UnknownCommand(this.cliModule.terminalService);
+    this.docsCommand = new DocsCommand(this.cliModule.messageService);
+    this.updateCommand = new UpdateCommand();
+    this.helpCommand = new HelpCommand(this.cliModule.helpService);
   }
 
   getApp() {
@@ -27,7 +51,7 @@ export class Cli {
     // general
     const [command, description] = this.commander;
     commander
-      .version(require('../../package.json').version, '-v, --version')
+      .version(this.version, '-v, --version')
       .name(`${command}`)
       .usage('[options] [command]')
       .description(description);
@@ -41,26 +65,43 @@ export class Cli {
         .action(() => this.docsCommand.run());
     })();
 
-    // unknown
+    // update
+    (() => {
+      const [command, description] = this.updateCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .action(() => this.updateCommand.run());
+    })();
+
+    // help
+    (() => {
+      const [command, description, detailOpt] = this.helpCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .option(...detailOpt)
+        .action(options => this.helpCommand.run(this.version, options));
+      commander.on('--help', () => {
+        console.log('');
+        console.log('Show help:');
+        console.log('  $ ' + green('sheetbase help|h'));
+      });
+    })();
+
+    // *
     (() => {
       const [command, description] = this.unknownCommandDef;
       commander
         .command(command)
         .description(description)
-        .action(() => this.unknownCommand.run());
+        .action(cmd => this.unknownCommand.run(cmd.args[0]));
     })();
 
-    // help
-    commander
-      .command('help')
-      .description('Display help.')
-      .action(() => commander.outputHelp());
-
-    // *
-    commander
-      .command('*')
-      .description('Any other command is not supported.')
-      .action(cmd => console.error(red(`Unknown command '${cmd.args[0]}'`)));
+    // updating
+    if (process.argv.slice(2)[0] !== 'update') {
+      this.updateCommand.checkUpdate();
+    }
 
     return commander;
   }

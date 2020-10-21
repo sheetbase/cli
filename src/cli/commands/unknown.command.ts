@@ -1,7 +1,9 @@
-export class UnknownCommand {
-  constructor() {}
+import {TerminalService} from '../../lib/services/terminal.service';
 
-  run() {
-    console.log('unknown ...');
+export class UnknownCommand {
+  constructor(private terminalService: TerminalService) {}
+
+  run(name: string) {
+    this.terminalService.exec('npm run ' + name);
   }
 }

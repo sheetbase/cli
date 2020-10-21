@@ -1,7 +1,13 @@
+const open = require('open');
+
+import {MessageService} from '../../lib/services/message.service';
+
 export class DocsCommand {
-  constructor() {}
+  constructor(private messageService: MessageService) {}
 
   run() {
-    console.log('docs ...');
+    const docsUrl = 'https://sheetbase.dev/docs';
+    this.messageService.logInfo('APP__INFO__LINK_OPENED', false, [docsUrl]);
+    open(docsUrl);
   }
 }
