@@ -88,8 +88,12 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#commander" class="tsd-kind-icon">commander</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#docscommand" class="tsd-kind-icon">docs<wbr>Command</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#docscommanddef" class="tsd-kind-icon">docs<wbr>Command<wbr>Def</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#helpcommand" class="tsd-kind-icon">help<wbr>Command</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#helpcommanddef" class="tsd-kind-icon">help<wbr>Command<wbr>Def</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#unknowncommand" class="tsd-kind-icon">unknown<wbr>Command</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#unknowncommanddef" class="tsd-kind-icon">unknown<wbr>Command<wbr>Def</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#updatecommand" class="tsd-kind-icon">update<wbr>Command</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cli.html#updatecommanddef" class="tsd-kind-icon">update<wbr>Command<wbr>Def</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -113,7 +117,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L16">cli/index.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L37">cli/index.ts:37</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="cli.html" class="tsd-signature-type">Cli</a></h4>
@@ -129,7 +133,7 @@
 					<div class="tsd-signature tsd-kind-icon">commander<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;sheetbase&#x27;, &#x27;Official CLI for working with Sheetbase.&#x27;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L12">cli/index.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L18">cli/index.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,17 +143,37 @@
 					<div class="tsd-signature tsd-kind-icon">docs<wbr>Command<span class="tsd-signature-symbol">:</span> <a href="docscommand.html" class="tsd-signature-type">DocsCommand</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L9">cli/index.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L14">cli/index.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="docscommanddef" class="tsd-anchor"></a>
 					<h3>docs<wbr>Command<wbr>Def</h3>
-					<div class="tsd-signature tsd-kind-icon">docs<wbr>Command<wbr>Def<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commanddef" class="tsd-signature-type">CommandDef</a><span class="tsd-signature-symbol"> = [&#x27;docs&#x27;, &#x27;Command description.&#x27;]</span></div>
+					<div class="tsd-signature tsd-kind-icon">docs<wbr>Command<wbr>Def<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commanddef" class="tsd-signature-type">CommandDef</a><span class="tsd-signature-symbol"> = [&#x27;docs&#x27;, &#x27;Open documentation.&#x27;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L14">cli/index.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L25">cli/index.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="helpcommand" class="tsd-anchor"></a>
+					<h3>help<wbr>Command</h3>
+					<div class="tsd-signature tsd-kind-icon">help<wbr>Command<span class="tsd-signature-symbol">:</span> <a href="helpcommand.html" class="tsd-signature-type">HelpCommand</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L16">cli/index.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="helpcommanddef" class="tsd-anchor"></a>
+					<h3>help<wbr>Command<wbr>Def</h3>
+					<div class="tsd-signature tsd-kind-icon">help<wbr>Command<wbr>Def<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commanddef" class="tsd-signature-type">CommandDef</a><span class="tsd-signature-symbol"> = [&#x27;help&#x27;,&#x27;Display help.&#x27;,[&#x27;-d, --detail&#x27;, &#x27;Show detail help.&#x27;],]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L33">cli/index.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,17 +183,37 @@
 					<div class="tsd-signature tsd-kind-icon">unknown<wbr>Command<span class="tsd-signature-symbol">:</span> <a href="unknowncommand.html" class="tsd-signature-type">UnknownCommand</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L10">cli/index.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L13">cli/index.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="unknowncommanddef" class="tsd-anchor"></a>
 					<h3>unknown<wbr>Command<wbr>Def</h3>
-					<div class="tsd-signature tsd-kind-icon">unknown<wbr>Command<wbr>Def<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commanddef" class="tsd-signature-type">CommandDef</a><span class="tsd-signature-symbol"> = [&#x27;unknown&#x27;, &#x27;Command description.&#x27;]</span></div>
+					<div class="tsd-signature tsd-kind-icon">unknown<wbr>Command<wbr>Def<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commanddef" class="tsd-signature-type">CommandDef</a><span class="tsd-signature-symbol"> = [&#x27;*&#x27;,&#x27;Any other command will run: &#x60;npm run [cmd]&#x60;.&#x27;,]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L16">cli/index.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L20">cli/index.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="updatecommand" class="tsd-anchor"></a>
+					<h3>update<wbr>Command</h3>
+					<div class="tsd-signature tsd-kind-icon">update<wbr>Command<span class="tsd-signature-symbol">:</span> <a href="updatecommand.html" class="tsd-signature-type">UpdateCommand</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L15">cli/index.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="updatecommanddef" class="tsd-anchor"></a>
+					<h3>update<wbr>Command<wbr>Def</h3>
+					<div class="tsd-signature tsd-kind-icon">update<wbr>Command<wbr>Def<span class="tsd-signature-symbol">:</span> <a href="../globals.html#commanddef" class="tsd-signature-type">CommandDef</a><span class="tsd-signature-symbol"> = [&#x27;update&#x27;,&#x27;Update the CLI to the latest version.&#x27;,[&#x27;-y, --yes&#x27;, &#x27;Do update now.&#x27;],]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L27">cli/index.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -186,7 +230,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/61ec78a/src/cli/index.ts#L24">cli/index.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/index.ts#L48">cli/index.ts:48</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Command</span></h4>
@@ -205,6 +249,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -223,10 +270,22 @@
 								<a href="cli.html#docscommanddef" class="tsd-kind-icon">docs<wbr>Command<wbr>Def</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="cli.html#helpcommand" class="tsd-kind-icon">help<wbr>Command</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="cli.html#helpcommanddef" class="tsd-kind-icon">help<wbr>Command<wbr>Def</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="cli.html#unknowncommand" class="tsd-kind-icon">unknown<wbr>Command</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="cli.html#unknowncommanddef" class="tsd-kind-icon">unknown<wbr>Command<wbr>Def</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="cli.html#updatecommand" class="tsd-kind-icon">update<wbr>Command</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="cli.html#updatecommanddef" class="tsd-kind-icon">update<wbr>Command<wbr>Def</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="cli.html#getapp" class="tsd-kind-icon">get<wbr>App</a>
@@ -239,19 +298,76 @@
 						<a href="docscommand.html" class="tsd-kind-icon">Docs<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="helpservice.html" class="tsd-kind-icon">Help<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="helperservice.html" class="tsd-kind-icon">Helper<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="lib.html" class="tsd-kind-icon">Lib</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="messageservice.html" class="tsd-kind-icon">Message<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="unknowncommand.html" class="tsd-kind-icon">Unknown<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/filecopyrequestbody.html" class="tsd-kind-icon">File<wbr>Copy<wbr>Request<wbr>Body</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/helpoptions.html" class="tsd-kind-icon">Help<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/system.html" class="tsd-kind-icon">System</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/updateoptions.html" class="tsd-kind-icon">Update<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#commanddef" class="tsd-kind-icon">Command<wbr>Def</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="../globals.html#cliapp" class="tsd-kind-icon">cli<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#config" class="tsd-kind-icon">config</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#error" class="tsd-kind-icon">error</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#info" class="tsd-kind-icon">info</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#ok" class="tsd-kind-icon">ok</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#open" class="tsd-kind-icon">open</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#ttytable" class="tsd-kind-icon">tty<wbr>Table</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#wait" class="tsd-kind-icon">wait</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#warn" class="tsd-kind-icon">warn</a>
 					</li>
 				</ul>
 			</nav>
@@ -266,6 +382,9 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 		</div>
 	</div>

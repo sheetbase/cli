@@ -11,7 +11,9 @@
 - [Command overview](#command-overview)
 - [Command reference](#command-reference)
   - [`docs`](#command-docs)
-  - [`unknown`](#command-unknown)
+  - [`help`](#command-help)
+  - [`*`](#command-*)
+  - [`update`](#command-update)
   - [`help`](#command-help)
 - [Detail API reference](https://sheetbase.github.io/cli)
 
@@ -26,7 +28,9 @@
 Official CLI for working with Sheetbase.
 
 - [`sheetbase docs`](#command-docs)
-- [`sheetbase unknown`](#command-unknown)
+- [`sheetbase help --detail`](#command-help)
+- [`sheetbase *`](#command-*)
+- [`sheetbase update --yes`](#command-update)
 - [`sheetbase help`](#command-help)
 
 <h2><a name="command-reference"><p>Command reference</p>
@@ -35,12 +39,30 @@ Official CLI for working with Sheetbase.
 <h3><a name="command-docs"><p><code>docs</code></p>
 </a></h3>
 
-Command description.
+Open documentation.
 
-<h3><a name="command-unknown"><p><code>unknown</code></p>
+<h3><a name="command-help"><p><code>help</code></p>
 </a></h3>
 
-Command description.
+Display help.
+
+**Options**
+
+- `-d, --detail`: Show detail help.
+
+<h3><a name="command-*"><p><code>*</code></p>
+</a></h3>
+
+Any other command will run: `npm run [cmd]`.
+
+<h3><a name="command-update"><p><code>update</code></p>
+</a></h3>
+
+Update the CLI to the latest version.
+
+**Options**
+
+- `-y, --yes`: Do update now.
 
 <h3><a name="command-help"><p><code>help</code></p>
 </a></h3>

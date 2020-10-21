@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UnknownCommand | @sheetbase/cli</title>
+	<title>HelpCommand | @sheetbase/cli</title>
 	<meta name="description" content="Documentation for @sheetbase/cli">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="unknowncommand.html">UnknownCommand</a>
+					<a href="helpcommand.html">HelpCommand</a>
 				</li>
 			</ul>
-			<h1>Class UnknownCommand</h1>
+			<h1>Class HelpCommand</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UnknownCommand</span>
+						<span class="target">HelpCommand</span>
 					</li>
 				</ul>
 			</section>
@@ -79,13 +79,13 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="unknowncommand.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="helpcommand.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="unknowncommand.html#run" class="tsd-kind-icon">run</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="helpcommand.html#run" class="tsd-kind-icon">run</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,22 +97,22 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Unknown<wbr>Command<span class="tsd-signature-symbol">(</span>terminalService<span class="tsd-signature-symbol">: </span><a href="terminalservice.html" class="tsd-signature-type">TerminalService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="unknowncommand.html" class="tsd-signature-type">UnknownCommand</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Help<wbr>Command<span class="tsd-signature-symbol">(</span>helpService<span class="tsd-signature-symbol">: </span><a href="helpservice.html" class="tsd-signature-type">HelpService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="helpcommand.html" class="tsd-signature-type">HelpCommand</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/unknown.command.ts#L3">cli/commands/unknown.command.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/help.command.ts#L10">cli/commands/help.command.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>terminalService: <a href="terminalservice.html" class="tsd-signature-type">TerminalService</a></h5>
+									<h5>helpService: <a href="helpservice.html" class="tsd-signature-type">HelpService</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="unknowncommand.html" class="tsd-signature-type">UnknownCommand</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="helpcommand.html" class="tsd-signature-type">HelpCommand</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -123,19 +123,22 @@
 					<a name="run" class="tsd-anchor"></a>
 					<h3>run</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, cmdOptions<span class="tsd-signature-symbol">: </span><a href="../interfaces/helpoptions.html" class="tsd-signature-type">HelpOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/unknown.command.ts#L6">cli/commands/unknown.command.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/help.command.ts#L13">cli/commands/help.command.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<h5>version: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>cmdOptions: <a href="../interfaces/helpoptions.html" class="tsd-signature-type">HelpOptions</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -166,9 +169,21 @@
 					<li class=" tsd-kind-class">
 						<a href="driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
 					</li>
-					<li class=" tsd-kind-class">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
 						<a href="helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="helpcommand.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="helpcommand.html#run" class="tsd-kind-icon">run</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="helpservice.html" class="tsd-kind-icon">Help<wbr>Service</a>
 					</li>
@@ -184,21 +199,9 @@
 					<li class=" tsd-kind-class">
 						<a href="terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="unknowncommand.html" class="tsd-kind-icon">Unknown<wbr>Command</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="unknowncommand.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="unknowncommand.html#run" class="tsd-kind-icon">run</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
 					</li>

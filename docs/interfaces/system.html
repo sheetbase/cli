@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UnknownCommand | @sheetbase/cli</title>
+	<title>System | @sheetbase/cli</title>
 	<meta name="description" content="Documentation for @sheetbase/cli">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="unknowncommand.html">UnknownCommand</a>
+					<a href="system.html">System</a>
 				</li>
 			</ul>
-			<h1>Class UnknownCommand</h1>
+			<h1>Interface System</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UnknownCommand</span>
+						<span class="target">System</span>
 					</li>
 				</ul>
 			</section>
@@ -77,70 +77,47 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="unknowncommand.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="unknowncommand.html#run" class="tsd-kind-icon">run</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="system.html#googleclient" class="tsd-kind-icon">google<wbr>Client</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="system.html#projectid" class="tsd-kind-icon">project<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="system.html#projectname" class="tsd-kind-icon">project<wbr>Name</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Unknown<wbr>Command<span class="tsd-signature-symbol">(</span>terminalService<span class="tsd-signature-symbol">: </span><a href="terminalservice.html" class="tsd-signature-type">TerminalService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="unknowncommand.html" class="tsd-signature-type">UnknownCommand</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/unknown.command.ts#L3">cli/commands/unknown.command.ts:3</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>terminalService: <a href="terminalservice.html" class="tsd-signature-type">TerminalService</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="unknowncommand.html" class="tsd-signature-type">UnknownCommand</a></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="googleclient" class="tsd-anchor"></a>
+					<h3>google<wbr>Client</h3>
+					<div class="tsd-signature tsd-kind-icon">google<wbr>Client<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">OAuth2Client</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/lib/hooks/builtin.hook.ts#L9">lib/hooks/builtin.hook.ts:9</a></li>
+						</ul>
+					</aside>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="run" class="tsd-anchor"></a>
-					<h3>run</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/unknown.command.ts#L6">cli/commands/unknown.command.ts:6</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="projectid" class="tsd-anchor"></a>
+					<h3>project<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">project<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/lib/hooks/builtin.hook.ts#L10">lib/hooks/builtin.hook.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="projectname" class="tsd-anchor"></a>
+					<h3>project<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">project<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/lib/hooks/builtin.hook.ts#L11">lib/hooks/builtin.hook.ts:11</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -155,67 +132,70 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
+						<a href="../classes/builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="cli.html" class="tsd-kind-icon">Cli</a>
+						<a href="../classes/cli.html" class="tsd-kind-icon">Cli</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="docscommand.html" class="tsd-kind-icon">Docs<wbr>Command</a>
+						<a href="../classes/docscommand.html" class="tsd-kind-icon">Docs<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
+						<a href="../classes/driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
+						<a href="../classes/helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="helpservice.html" class="tsd-kind-icon">Help<wbr>Service</a>
+						<a href="../classes/helpservice.html" class="tsd-kind-icon">Help<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="helperservice.html" class="tsd-kind-icon">Helper<wbr>Service</a>
+						<a href="../classes/helperservice.html" class="tsd-kind-icon">Helper<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="lib.html" class="tsd-kind-icon">Lib</a>
+						<a href="../classes/lib.html" class="tsd-kind-icon">Lib</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="messageservice.html" class="tsd-kind-icon">Message<wbr>Service</a>
+						<a href="../classes/messageservice.html" class="tsd-kind-icon">Message<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
+						<a href="../classes/terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/unknowncommand.html" class="tsd-kind-icon">Unknown<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="filecopyrequestbody.html" class="tsd-kind-icon">File<wbr>Copy<wbr>Request<wbr>Body</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="helpoptions.html" class="tsd-kind-icon">Help<wbr>Options</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="unknowncommand.html" class="tsd-kind-icon">Unknown<wbr>Command</a>
+					<li class="current tsd-kind-interface">
+						<a href="system.html" class="tsd-kind-icon">System</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="unknowncommand.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="system.html#googleclient" class="tsd-kind-icon">google<wbr>Client</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="unknowncommand.html#run" class="tsd-kind-icon">run</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="system.html#projectid" class="tsd-kind-icon">project<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="system.html#projectname" class="tsd-kind-icon">project<wbr>Name</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
-					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/filecopyrequestbody.html" class="tsd-kind-icon">File<wbr>Copy<wbr>Request<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/helpoptions.html" class="tsd-kind-icon">Help<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/system.html" class="tsd-kind-icon">System</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/updateoptions.html" class="tsd-kind-icon">Update<wbr>Options</a>
+						<a href="updateoptions.html" class="tsd-kind-icon">Update<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#commanddef" class="tsd-kind-icon">Command<wbr>Def</a>
