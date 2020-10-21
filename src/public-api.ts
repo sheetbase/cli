@@ -14,3 +14,9 @@ export * from './lib/services/help.service';
 export * from './lib/services/terminal.service';
 export * from './lib/services/message.service';
 export * from './lib/services/drive.service';
+
+export * from './cli/commands/google.command';
+export * from './cli/commands/google-list.command';
+export * from './cli/commands/google-connect.command';
+export * from './cli/commands/google-disconnect.command';
+export * from './cli/commands/google-active.command';

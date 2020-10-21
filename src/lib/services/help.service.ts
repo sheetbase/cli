@@ -61,18 +61,18 @@ export class HelpService {
     );
   }
 
-  private googleHelp() {
+  googleHelp() {
     return (
       '' +
       `
     ${green('list')} ....................... List connected accounts.
     ${green('connect')} .................... Connect an account.
     ${green('disconnect [input]')} ......... Disconnect an account.
-    ${green('default [id]')} ............... Change the default account.`
+    ${green('active [id]')} ................ Change the active account.`
     );
   }
 
-  private projectHelp() {
+  projectHelp() {
     return (
       '' +
       `
@@ -91,7 +91,7 @@ export class HelpService {
     );
   }
 
-  private databaseHelp() {
+  databaseHelp() {
     return (
       '' +
       `

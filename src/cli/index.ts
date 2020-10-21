@@ -6,6 +6,11 @@ import {UnknownCommand} from './commands/unknown.command';
 import {DocsCommand} from './commands/docs.command';
 import {UpdateCommand} from './commands/update.command';
 import {HelpCommand} from './commands/help.command';
+import {GoogleCommand} from './commands/google.command';
+import {GoogleListCommand} from './commands/google-list.command';
+import {GoogleConnectCommand} from './commands/google-connect.command';
+import {GoogleDisconnectCommand} from './commands/google-disconnect.command';
+import {GoogleActiveCommand} from './commands/google-active.command';
 
 export class Cli {
   private version: string;
@@ -14,6 +19,11 @@ export class Cli {
   docsCommand: DocsCommand;
   updateCommand: UpdateCommand;
   helpCommand: HelpCommand;
+  googleCommand: GoogleCommand;
+  googleListCommand: GoogleListCommand;
+  googleConnectCommand: GoogleConnectCommand;
+  googleDisconnectCommand: GoogleDisconnectCommand;
+  googleActiveCommand: GoogleActiveCommand;
 
   commander = ['sheetbase', 'Official CLI for working with Sheetbase.'];
 
@@ -36,6 +46,37 @@ export class Cli {
     ['-d, --detail', 'Show detail help.'],
   ];
 
+  googleCommandDef: CommandDef = [
+    'google [subCommand] [params...]',
+    'Manage Google accounts.',
+    ['-y, --yes', '(connect) Agree on account connection.'],
+    ['-c, --creds', '(connect) Save credential to .googlerc.json.'],
+    ['-f, --full-drive', '(connect) Not recommended, full access to Drive.'],
+  ];
+
+  googleListCommandDef: CommandDef = [
+    'google-list',
+    'List connected accounts, proxy to `google list`.',
+  ];
+
+  googleConnectCommandDef: CommandDef = [
+    'google-connect',
+    'Connect an account, proxy to `google connect`.',
+    ['-y, --yes', 'Agree on account connection.'],
+    ['-c, --creds', 'Save credential to .googlerc.json.'],
+    ['-f, --full-drive', 'Not recommended, full access to Drive.'],
+  ];
+
+  googleDisconnectCommandDef: CommandDef = [
+    'google-disconnect <input>',
+    'Disconnect an account, proxy to `google disconnect`.',
+  ];
+
+  googleActiveCommandDef: CommandDef = [
+    'google-active <id>',
+    'Change the active account, proxy to `google active`.',
+  ];
+
   constructor() {
     this.version = require('../../package.json').version;
     this.cliModule = new CliModule();
@@ -43,6 +84,18 @@ export class Cli {
     this.docsCommand = new DocsCommand(this.cliModule.messageService);
     this.updateCommand = new UpdateCommand(this.cliModule.terminalService);
     this.helpCommand = new HelpCommand(this.cliModule.helpService);
+    this.googleListCommand = new GoogleListCommand();
+    this.googleConnectCommand = new GoogleConnectCommand();
+    this.googleDisconnectCommand = new GoogleDisconnectCommand();
+    this.googleActiveCommand = new GoogleActiveCommand();
+    this.googleCommand = new GoogleCommand(
+      this.cliModule.helpService,
+      this.cliModule.messageService,
+      this.googleListCommand,
+      this.googleConnectCommand,
+      this.googleDisconnectCommand,
+      this.googleActiveCommand
+    );
   }
 
   getApp() {
@@ -73,6 +126,71 @@ export class Cli {
         .description(description)
         .option(...yesOpt)
         .action(options => this.updateCommand.run(this.version, options));
+    })();
+
+    // google
+    (() => {
+      const [
+        command,
+        description,
+        yesOpt,
+        credsOpt,
+        fullDriveOpt,
+      ] = this.googleCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .option(...yesOpt)
+        .option(...credsOpt)
+        .option(...fullDriveOpt)
+        .action((subCommand, params, options) =>
+          this.googleCommand.run(subCommand, params, options)
+        );
+    })();
+
+    // google-list
+    (() => {
+      const [command, description] = this.googleListCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .action(() => this.googleListCommand.run());
+    })();
+
+    // google-connect
+    (() => {
+      const [
+        command,
+        description,
+        yesOpt,
+        credsOpt,
+        fullDriveOpt,
+      ] = this.googleConnectCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .option(...yesOpt)
+        .option(...credsOpt)
+        .option(...fullDriveOpt)
+        .action(options => this.googleConnectCommand.run(options));
+    })();
+
+    // google-disconnect
+    (() => {
+      const [command, description] = this.googleDisconnectCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .action(input => this.googleDisconnectCommand.run(input));
+    })();
+
+    // google-active
+    (() => {
+      const [command, description] = this.googleActiveCommandDef;
+      commander
+        .command(command)
+        .description(description)
+        .action(id => this.googleActiveCommand.run(id));
     })();
 
     // help

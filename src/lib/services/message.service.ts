@@ -27,7 +27,7 @@ export class MessageService {
     FRONTEND_PRERENDER__ERROR__NO_PRERENDER: 'No prerender configs.',
     GOOGLE_DISCONNECTED__ERROR__NO_VALUE:
       'No value provided, available: ' +
-      `${blue('[id]')}|${blue('all')}|${blue('default')}|${blue('local')}`,
+      `${blue('[id]')}|${blue('all')}|${blue('active')}|${blue('local')}`,
     PROJECT__ERROR__INVALID: 'Invalid project, no "sheetbase.json" found.',
     PROJECT__ERROR__EXISTS: 'Project exists, please choose different name.',
     PROJECT_CONFIG_IMPORT__ERROR__NO_FILE: 'No configs file found.',
@@ -87,9 +87,9 @@ export class MessageService {
     GOOGLE_DISCONNECTED__INFO__NO_ACCOUNTS: 'No connected accounts.',
     GOOGLE_LIST__OK: `Accounts listed.
       + To disconnect accounts: ${magenta(
-        'sheetbase google disconnect [id]|all|default|local'
+        'sheetbase google disconnect [id]|all|active|local'
       )}
-      + To change default account: ${magenta('sheetbase google default [id]')}`,
+      + To change active account: ${magenta('sheetbase google active [id]')}`,
     PROJECT_BUILD__OK:
       'Project build completed!' +
       EOL +
