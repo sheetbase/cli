@@ -35,19 +35,24 @@ export class Cli {
   docsCommandDef: CommandDef = ['docs', 'Open documentation.'];
 
   updateCommandDef: CommandDef = [
-    'update',
+    ['update', 'upgrade', 'up'],
     'Update the CLI to the latest version.',
     ['-y, --yes', 'Do update now.'],
+    ['-d, --deps', 'Update project dependencies.'],
   ];
 
   helpCommandDef: CommandDef = [
-    'help',
+    ['help', 'usage', 'he'],
     'Display help.',
     ['-d, --detail', 'Show detail help.'],
   ];
 
+  /**
+   * @param [subCommand] - Supported sub-command
+   * @param [params...] - Params for sub-command
+   */
   googleCommandDef: CommandDef = [
-    'google [subCommand] [params...]',
+    ['google [subCommand] [params...]', 'gg'],
     'Manage Google accounts.',
     ['-y, --yes', '(connect) Agree on account connection.'],
     ['-c, --creds', '(connect) Save credential to .googlerc.json.'],
@@ -55,25 +60,31 @@ export class Cli {
   ];
 
   googleListCommandDef: CommandDef = [
-    'google-list',
+    ['google-list', 'gg-list', 'gg-show', 'ggl'],
     'List connected accounts, proxy to `google list`.',
   ];
 
   googleConnectCommandDef: CommandDef = [
-    'google-connect',
+    ['google-connect', 'gg-connect', 'gg-login', 'ggc'],
     'Connect an account, proxy to `google connect`.',
     ['-y, --yes', 'Agree on account connection.'],
     ['-c, --creds', 'Save credential to .googlerc.json.'],
     ['-f, --full-drive', 'Not recommended, full access to Drive.'],
   ];
 
+  /**
+   * @param <input> - Disconnection input: <id>, all, active, local
+   */
   googleDisconnectCommandDef: CommandDef = [
-    'google-disconnect <input>',
+    ['google-disconnect <input>', 'gg-disconnect', 'gg-logout', 'ggd'],
     'Disconnect an account, proxy to `google disconnect`.',
   ];
 
+  /**
+   * @param <id> - The Google account id
+   */
   googleActiveCommandDef: CommandDef = [
-    'google-active <id>',
+    ['google-active <id>', 'gg-active', 'gg-change', 'gga'],
     'Change the active account, proxy to `google active`.',
   ];
 
@@ -84,7 +95,11 @@ export class Cli {
     this.docsCommand = new DocsCommand(this.cliModule.messageService);
     this.updateCommand = new UpdateCommand(this.cliModule.terminalService);
     this.helpCommand = new HelpCommand(this.cliModule.helpService);
-    this.googleListCommand = new GoogleListCommand();
+    this.googleListCommand = new GoogleListCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.googleService
+    );
     this.googleConnectCommand = new GoogleConnectCommand();
     this.googleDisconnectCommand = new GoogleDisconnectCommand();
     this.googleActiveCommand = new GoogleActiveCommand();
@@ -113,25 +128,32 @@ export class Cli {
     (() => {
       const [command, description] = this.docsCommandDef;
       commander
-        .command(command)
+        .command(command as string)
         .description(description)
         .action(() => this.docsCommand.run());
     })();
 
     // update
     (() => {
-      const [command, description, yesOpt] = this.updateCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        yesOpt,
+        depsOpt,
+      ] = this.updateCommandDef;
       commander
         .command(command)
+        .aliases(aliases)
         .description(description)
         .option(...yesOpt)
+        .option(...depsOpt)
         .action(options => this.updateCommand.run(this.version, options));
     })();
 
     // google
     (() => {
       const [
-        command,
+        [command, ...aliases],
         description,
         yesOpt,
         credsOpt,
@@ -139,6 +161,7 @@ export class Cli {
       ] = this.googleCommandDef;
       commander
         .command(command)
+        .aliases(aliases)
         .description(description)
         .option(...yesOpt)
         .option(...credsOpt)
@@ -150,9 +173,10 @@ export class Cli {
 
     // google-list
     (() => {
-      const [command, description] = this.googleListCommandDef;
+      const [[command, ...aliases], description] = this.googleListCommandDef;
       commander
         .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.googleListCommand.run());
     })();
@@ -160,7 +184,7 @@ export class Cli {
     // google-connect
     (() => {
       const [
-        command,
+        [command, ...aliases],
         description,
         yesOpt,
         credsOpt,
@@ -168,6 +192,7 @@ export class Cli {
       ] = this.googleConnectCommandDef;
       commander
         .command(command)
+        .aliases(aliases)
         .description(description)
         .option(...yesOpt)
         .option(...credsOpt)
@@ -177,28 +202,37 @@ export class Cli {
 
     // google-disconnect
     (() => {
-      const [command, description] = this.googleDisconnectCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+      ] = this.googleDisconnectCommandDef;
       commander
         .command(command)
+        .aliases(aliases)
         .description(description)
         .action(input => this.googleDisconnectCommand.run(input));
     })();
 
     // google-active
     (() => {
-      const [command, description] = this.googleActiveCommandDef;
+      const [[command, ...aliases], description] = this.googleActiveCommandDef;
       commander
         .command(command)
+        .aliases(aliases)
         .description(description)
         .action(id => this.googleActiveCommand.run(id));
     })();
 
     // help
     (() => {
-      const [command, description, detailOpt] = this.helpCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        detailOpt,
+      ] = this.helpCommandDef;
       commander
         .command(command)
-        .alias('h')
+        .aliases(aliases)
         .description(description)
         .option(...detailOpt)
         .action(options => this.helpCommand.run(this.version, options));
@@ -213,7 +247,7 @@ export class Cli {
     (() => {
       const [command, description] = this.unknownCommandDef;
       commander
-        .command(command)
+        .command(command as string)
         .description(description)
         .action(cmd => this.unknownCommand.run(cmd.args[0]));
     })();
@@ -227,4 +261,4 @@ export class Cli {
   }
 }
 
-type CommandDef = [string, string, ...Array<[string, string]>];
+type CommandDef = [string | string[], string, ...Array<[string, string]>];

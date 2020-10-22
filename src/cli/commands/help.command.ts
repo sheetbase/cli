@@ -3,14 +3,14 @@ import {textSync} from 'figlet';
 
 import {HelpService} from '../../lib/services/help.service';
 
-interface HelpOptions {
+interface HelpCommandOptions {
   detail?: boolean;
 }
 
 export class HelpCommand {
   constructor(private helpService: HelpService) {}
 
-  run(version: string, cmdOptions: HelpOptions) {
+  run(version: string, commandOptions: HelpCommandOptions) {
     console.log(
       '\n' +
         textSync('Sheetbase', {horizontalLayout: 'full'}) +
@@ -21,7 +21,7 @@ export class HelpCommand {
         ' Usage: ' +
         green('sheetbase <command> [<args>] [--help] [options]')
     );
-    if (cmdOptions.detail) {
+    if (commandOptions.detail) {
       console.log(this.helpService.helpDetail());
     } else {
       console.log(this.helpService.help());

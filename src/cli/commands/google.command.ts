@@ -4,12 +4,12 @@ import {MessageService} from '../../lib/services/message.service';
 import {GoogleListCommand} from './google-list.command';
 import {
   GoogleConnectCommand,
-  GoogleConnectOptions,
+  GoogleConnectCommandOptions,
 } from './google-connect.command';
 import {GoogleDisconnectCommand} from './google-disconnect.command';
 import {GoogleActiveCommand} from './google-active.command';
 
-type GoogleOptions = GoogleConnectOptions;
+type GoogleCommandOptions = GoogleConnectCommandOptions;
 
 export class GoogleCommand {
   constructor(
@@ -21,24 +21,30 @@ export class GoogleCommand {
     private googleActiveCommand: GoogleActiveCommand
   ) {}
 
-  run(subCommand: string, params: string[], cmdOptions: GoogleOptions) {
+  run(
+    subCommand: string,
+    params: string[],
+    commandOptions: GoogleCommandOptions
+  ) {
     switch (subCommand) {
       case 'list':
+      case 'show':
       case 'ls':
         this.googleListCommand.run();
         break;
       case 'connect':
       case 'login':
-      case 'add':
-        this.googleConnectCommand.run(cmdOptions);
+      case 'cn':
+        this.googleConnectCommand.run(commandOptions);
         break;
       case 'disconnect':
       case 'logout':
-      case 'remove':
-      case 'rm':
+      case 'dc':
         this.googleDisconnectCommand.run(params[0]);
         break;
       case 'active':
+      case 'change':
+      case 'at':
         this.googleActiveCommand.run(params[0]);
         break;
       default:

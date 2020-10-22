@@ -5,8 +5,9 @@ import axios from 'axios';
 
 import {TerminalService} from '../../lib/services/terminal.service';
 
-interface UpdateOptions {
+interface UpdateCommandOptions {
   yes?: boolean;
+  deps?: boolean;
 }
 
 export class UpdateCommand {
@@ -14,7 +15,7 @@ export class UpdateCommand {
 
   constructor(private terminalService: TerminalService) {}
 
-  async run(version: string, cmdOptions: UpdateOptions) {
+  async run(version: string, commandOptions: UpdateCommandOptions) {
     const {
       hasUpdate,
       currentVersion,
@@ -23,7 +24,7 @@ export class UpdateCommand {
     if (!hasUpdate) {
       console.log('\n Up to date :)');
     } else {
-      if (!cmdOptions.yes) {
+      if (!commandOptions.yes) {
         this.logUpdateMessage(currentVersion, latestVersion);
       } else {
         console.log('New version available, start updating now.');

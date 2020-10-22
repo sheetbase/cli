@@ -1,4 +1,4 @@
-export interface GoogleConnectOptions {
+export interface GoogleConnectCommandOptions {
   yes?: boolean;
   creds?: boolean;
   fullDrive?: boolean;
@@ -7,10 +7,10 @@ export interface GoogleConnectOptions {
 export class GoogleConnectCommand {
   constructor() {}
 
-  async run(cmdOptions: GoogleConnectOptions) {
+  async run(commandOptions: GoogleConnectCommandOptions) {
     console.log('google connect ...');
-    console.log('yes: ', cmdOptions.yes);
-    console.log('creds: ', cmdOptions.creds);
-    console.log('full drive: ', cmdOptions.fullDrive);
+    console.log('yes: ', commandOptions.yes);
+    console.log('creds: ', commandOptions.creds);
+    console.log('full drive: ', commandOptions.fullDrive);
   }
 }
