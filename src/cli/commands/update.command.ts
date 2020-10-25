@@ -7,7 +7,7 @@ import {TerminalService} from '../../lib/services/terminal.service';
 
 interface UpdateCommandOptions {
   yes?: boolean;
-  deps?: boolean;
+  self?: boolean;
 }
 
 export class UpdateCommand {
@@ -16,20 +16,27 @@ export class UpdateCommand {
   constructor(private terminalService: TerminalService) {}
 
   async run(version: string, commandOptions: UpdateCommandOptions) {
-    const {
-      hasUpdate,
-      currentVersion,
-      latestVersion,
-    } = await this.getUpdateStatus(version);
-    if (!hasUpdate) {
-      console.log('\n Up to date :)');
-    } else {
-      if (!commandOptions.yes) {
-        this.logUpdateMessage(currentVersion, latestVersion);
+    // update the cli
+    if (commandOptions.self) {
+      const {
+        hasUpdate,
+        currentVersion,
+        latestVersion,
+      } = await this.getUpdateStatus(version);
+      if (!hasUpdate) {
+        console.log('\n Up to date :)');
       } else {
-        console.log('New version available, start updating now.');
-        this.terminalService.exec('npm install -g @sheetbase/cli@latest');
+        if (!commandOptions.yes) {
+          this.logUpdateMessage(currentVersion, latestVersion);
+        } else {
+          console.log('New version available, start updating now.');
+          this.terminalService.exec('npm install -g @sheetbase/cli@latest');
+        }
       }
+    }
+    // update dependencies
+    else {
+      console.log('TODO: update project dependencies ...');
     }
   }
 
@@ -52,7 +59,7 @@ export class UpdateCommand {
     }
   }
 
-  async getUpdateStatus(version: string) {
+  private async getUpdateStatus(version: string) {
     const {
       data: {latest},
     } = await axios({
@@ -66,7 +73,7 @@ export class UpdateCommand {
     };
   }
 
-  logUpdateMessage(from: string, to: string) {
+  private logUpdateMessage(from: string, to: string) {
     const table = ttyTable(
       [{value: 'Update available!', headerAlign: 'left', align: 'left'}],
       [

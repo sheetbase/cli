@@ -3,7 +3,7 @@ import {prompt as inquirerPrompt} from 'inquirer';
 import {capitalCase} from 'change-case';
 import {OAuth2Client} from 'google-auth-library';
 
-import {DriveService} from '../services/drive.service';
+import {DriveService} from '../../lib/services/drive.service';
 
 interface System {
   googleClient: OAuth2Client;

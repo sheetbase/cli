@@ -86,8 +86,6 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="updatecommand.html#checkupdate" class="tsd-kind-icon">check<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="updatecommand.html#getupdatestatus" class="tsd-kind-icon">get<wbr>Update<wbr>Status</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="updatecommand.html#logupdatemessage" class="tsd-kind-icon">log<wbr>Update<wbr>Message</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="updatecommand.html#run" class="tsd-kind-icon">run</a></li>
 							</ul>
 						</section>
@@ -106,7 +104,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/update.command.ts#L13">cli/commands/update.command.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/cli/commands/update.command.ts#L14">cli/commands/update.command.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/update.command.ts#L35">cli/commands/update.command.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/cli/commands/update.command.ts#L43">cli/commands/update.command.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -146,65 +144,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getupdatestatus" class="tsd-anchor"></a>
-					<h3>get<wbr>Update<wbr>Status</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Update<wbr>Status<span class="tsd-signature-symbol">(</span>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>currentVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>hasUpdate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>latestVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/update.command.ts#L54">cli/commands/update.command.ts:54</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>version: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>currentVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>hasUpdate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>latestVersion<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="logupdatemessage" class="tsd-anchor"></a>
-					<h3>log<wbr>Update<wbr>Message</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">log<wbr>Update<wbr>Message<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/update.command.ts#L68">cli/commands/update.command.ts:68</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>from: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>to: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="run" class="tsd-anchor"></a>
 					<h3>run</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, cmdOptions<span class="tsd-signature-symbol">: </span><a href="../interfaces/updateoptions.html" class="tsd-signature-type">UpdateOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>version<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, commandOptions<span class="tsd-signature-symbol">: </span><a href="../interfaces/updatecommandoptions.html" class="tsd-signature-type">UpdateCommandOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/update.command.ts#L17">cli/commands/update.command.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/cli/commands/update.command.ts#L18">cli/commands/update.command.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -213,7 +162,7 @@
 									<h5>version: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>cmdOptions: <a href="../interfaces/updateoptions.html" class="tsd-signature-type">UpdateOptions</a></h5>
+									<h5>commandOptions: <a href="../interfaces/updatecommandoptions.html" class="tsd-signature-type">UpdateCommandOptions</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -232,39 +181,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="cli.html" class="tsd-kind-icon">Cli</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="docscommand.html" class="tsd-kind-icon">Docs<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="helpservice.html" class="tsd-kind-icon">Help<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="helperservice.html" class="tsd-kind-icon">Helper<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="lib.html" class="tsd-kind-icon">Lib</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="messageservice.html" class="tsd-kind-icon">Message<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="unknowncommand.html" class="tsd-kind-icon">Unknown<wbr>Command</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -277,63 +193,12 @@
 								<a href="updatecommand.html#checkupdate" class="tsd-kind-icon">check<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="updatecommand.html#getupdatestatus" class="tsd-kind-icon">get<wbr>Update<wbr>Status</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="updatecommand.html#logupdatemessage" class="tsd-kind-icon">log<wbr>Update<wbr>Message</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="updatecommand.html#run" class="tsd-kind-icon">run</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/filecopyrequestbody.html" class="tsd-kind-icon">File<wbr>Copy<wbr>Request<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/helpoptions.html" class="tsd-kind-icon">Help<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/system.html" class="tsd-kind-icon">System</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/updateoptions.html" class="tsd-kind-icon">Update<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#commanddef" class="tsd-kind-icon">Command<wbr>Def</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#cliapp" class="tsd-kind-icon">cli<wbr>App</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#config" class="tsd-kind-icon">config</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#error" class="tsd-kind-icon">error</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#info" class="tsd-kind-icon">info</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#ok" class="tsd-kind-icon">ok</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#open" class="tsd-kind-icon">open</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#ttytable" class="tsd-kind-icon">tty<wbr>Table</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#wait" class="tsd-kind-icon">wait</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#warn" class="tsd-kind-icon">warn</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

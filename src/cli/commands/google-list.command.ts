@@ -12,6 +12,6 @@ export class GoogleListCommand {
   ) {}
 
   run() {
-    console.log('google list');
+    console.log('TODO: ...');
   }
 }

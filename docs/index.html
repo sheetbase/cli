@@ -70,36 +70,139 @@
 				</section>
 				<section id="tocx" data-note="AUTO-GENERATED CONTENT, DO NOT EDIT DIRECTLY!">
 					<ul>
-						<li><a href="#command-overview">Command overview</a></li>
-						<li><a href="#command-reference">Command reference</a><ul>
+						<li><a href="#cli-command-overview">Command overview</a></li>
+						<li><a href="#cli-command-reference">Command reference</a><ul>
 								<li><a href="#command-docs"><code>docs</code></a></li>
-								<li><a href="#command-unknown"><code>unknown</code></a></li>
+								<li><a href="#command-google"><code>google</code></a><ul>
+										<li><a href="#command-google-active"><code>active</code></a></li>
+										<li><a href="#command-google-connect"><code>connect</code></a></li>
+										<li><a href="#command-google-disconnect"><code>disconnect</code></a></li>
+										<li><a href="#command-google-list"><code>list</code></a></li>
+									</ul>
+								</li>
+								<li><a href="#command-update"><code>update</code></a></li>
 								<li><a href="#command-help"><code>help</code></a></li>
+								<li><a href="#command-*"><code>*</code></a></li>
 							</ul>
 						</li>
 						<li><a href="https://sheetbase.github.io/cli">Detail API reference</a></li>
 					</ul>
 				</section>
 				<section id="cli" data-note="AUTO-GENERATED CONTENT, DO NOT EDIT DIRECTLY!">
-					<h2><a name="command-overview"><p>Command overview</p>
+					<h2><a name="cli-command-overview"><p>Command overview</p>
 					</a></h2>
 					<p>Official CLI for working with Sheetbase.</p>
 					<ul>
 						<li><a href="#command-docs"><code>sheetbase docs</code></a></li>
-						<li><a href="#command-unknown"><code>sheetbase unknown</code></a></li>
-						<li><a href="#command-help"><code>sheetbase help</code></a></li>
+						<li><a href="#command-google"><code>sheetbase google|gg [subCommand] [params...] --yes --creds --full-drive</code></a></li>
+						<li><a href="#command-update"><code>sheetbase update|upgrade|up --yes --self</code></a></li>
+						<li><a href="#command-help"><code>sheetbase help|usage|he --detail</code></a></li>
+						<li><a href="#command-*"><code>sheetbase *</code></a></li>
 					</ul>
-					<h2><a name="command-reference"><p>Command reference</p>
+					<h2><a name="cli-command-reference"><p>Command reference</p>
 					</a></h2>
 					<h3><a name="command-docs"><p><code>docs</code></p>
 					</a></h3>
-					<p>Command description.</p>
-					<h3><a name="command-unknown"><p><code>unknown</code></p>
+					<p>Open documentation.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase docs</code></pre>
+					<h3><a name="command-google"><p><code>google</code></p>
 					</a></h3>
-					<p>Command description.</p>
+					<p>Manage Google accounts.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase google [subCommand] [params...] --yes --creds --full-drive
+sheetbase gg [subCommand] [params...] --yes --creds --full-drive</code></pre>
+					<p><strong>Sub-commands:</strong></p>
+					<h4><a name="command-google-active"><p><code>active</code></p>
+					</a></h4>
+					<p>Change the active account.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase google active &lt;id&gt;
+sheetbase google change &lt;id&gt;
+sheetbase google at &lt;id&gt;</code></pre>
+					<p><strong>Proxy use:</strong></p>
+					<pre><code class="language-sh">sheetbase google-active &lt;id&gt;
+sheetbase gg-active &lt;id&gt;
+sheetbase gg-change &lt;id&gt;
+sheetbase gga &lt;id&gt;</code></pre>
+					<p><strong>Parameters:</strong></p>
+					<ul>
+						<li><code>&lt;id&gt;</code>: The Google account id.</li>
+					</ul>
+					<h4><a name="command-google-connect"><p><code>connect</code></p>
+					</a></h4>
+					<p>Connect an account.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase google connect --yes --creds --full-drive
+sheetbase google login --yes --creds --full-drive
+sheetbase google cn --yes --creds --full-drive</code></pre>
+					<p><strong>Proxy use:</strong></p>
+					<pre><code class="language-sh">sheetbase google-connect --yes --creds --full-drive
+sheetbase gg-connect --yes --creds --full-drive
+sheetbase gg-login --yes --creds --full-drive
+sheetbase ggc --yes --creds --full-drive</code></pre>
+					<p><strong>Options:</strong></p>
+					<ul>
+						<li><code>-y, --yes</code>: Agree on account connection.</li>
+						<li><code>-c, --creds</code>: Save credential to .googlerc.json.</li>
+						<li><code>-f, --full-drive</code>: Not recommended, full access to Drive.</li>
+					</ul>
+					<h4><a name="command-google-disconnect"><p><code>disconnect</code></p>
+					</a></h4>
+					<p>Disconnect an account.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase google disconnect &lt;input&gt;
+sheetbase google <span class="hljs-built_in">logout</span> &lt;input&gt;
+sheetbase google dc &lt;input&gt;</code></pre>
+					<p><strong>Proxy use:</strong></p>
+					<pre><code class="language-sh">sheetbase google-disconnect &lt;input&gt;
+sheetbase gg-disconnect &lt;input&gt;
+sheetbase gg-logout &lt;input&gt;
+sheetbase ggd &lt;input&gt;</code></pre>
+					<p><strong>Parameters:</strong></p>
+					<ul>
+						<li><code>&lt;input&gt;</code>: Disconnection input: {id}, all, active, local.</li>
+					</ul>
+					<h4><a name="command-google-list"><p><code>list</code></p>
+					</a></h4>
+					<p>List connected accounts.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase google list
+sheetbase google show
+sheetbase google ls</code></pre>
+					<p><strong>Proxy use:</strong></p>
+					<pre><code class="language-sh">sheetbase google-list
+sheetbase gg-list
+sheetbase gg-show
+sheetbase ggl</code></pre>
+					<h3><a name="command-update"><p><code>update</code></p>
+					</a></h3>
+					<p>Update the CLI to the latest version.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase update --yes --self
+sheetbase upgrade --yes --self
+sheetbase up --yes --self</code></pre>
+					<p><strong>Options:</strong></p>
+					<ul>
+						<li><code>-y, --yes</code>: Do update now.</li>
+						<li><code>-s, --self</code>: Update the CLI itself.</li>
+					</ul>
 					<h3><a name="command-help"><p><code>help</code></p>
 					</a></h3>
 					<p>Display help.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase <span class="hljs-built_in">help</span> --detail
+sheetbase usage --detail
+sheetbase he --detail</code></pre>
+					<p><strong>Options:</strong></p>
+					<ul>
+						<li><code>-d, --detail</code>: Show detail help.</li>
+					</ul>
+					<h3><a name="command-*"><p><code>*</code></p>
+					</a></h3>
+					<p>Any other command will run: <code>npm run &lt;cmd&gt;</code>.</p>
+					<p><strong>Usage:</strong></p>
+					<pre><code class="language-sh">sheetbase &lt;cmd&gt;</code></pre>
 				</section>
 				<section id="license" data-note="AUTO-GENERATED CONTENT, DO NOT EDIT DIRECTLY!">
 					<a href="#license" id="license" style="color: inherit; text-decoration: none;">
@@ -120,16 +223,118 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
+						<a href="classes/backendbuildcommand.html" class="tsd-kind-icon">Backend<wbr>Build<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendcommand.html" class="tsd-kind-icon">Backend<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backenddeploycommand.html" class="tsd-kind-icon">Backend<wbr>Deploy<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendinstallcommand.html" class="tsd-kind-icon">Backend<wbr>Install<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendlintcommand.html" class="tsd-kind-icon">Backend<wbr>Lint<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendpushcommand.html" class="tsd-kind-icon">Backend<wbr>Push<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendruncommand.html" class="tsd-kind-icon">Backend<wbr>Run<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendtestcommand.html" class="tsd-kind-icon">Backend<wbr>Test<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backenduninstallcommand.html" class="tsd-kind-icon">Backend<wbr>Uninstall<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/cli.html" class="tsd-kind-icon">Cli</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/configcommand.html" class="tsd-kind-icon">Config<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/configexportcommand.html" class="tsd-kind-icon">Config<wbr>Export<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/configimportcommand.html" class="tsd-kind-icon">Config<wbr>Import<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/configlistcommand.html" class="tsd-kind-icon">Config<wbr>List<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/configupdatecommand.html" class="tsd-kind-icon">Config<wbr>Update<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/databasecommand.html" class="tsd-kind-icon">Database<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/databasecreatecommand.html" class="tsd-kind-icon">Database<wbr>Create<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/databaseexportcommand.html" class="tsd-kind-icon">Database<wbr>Export<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/databaseimportcommand.html" class="tsd-kind-icon">Database<wbr>Import<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/databaselistcommand.html" class="tsd-kind-icon">Database<wbr>List<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/docscommand.html" class="tsd-kind-icon">Docs<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendbuildcommand.html" class="tsd-kind-icon">Frontend<wbr>Build<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendcommand.html" class="tsd-kind-icon">Frontend<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontenddeploycommand.html" class="tsd-kind-icon">Frontend<wbr>Deploy<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendinstallcommand.html" class="tsd-kind-icon">Frontend<wbr>Install<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendlintcommand.html" class="tsd-kind-icon">Frontend<wbr>Lint<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendprerendercommand.html" class="tsd-kind-icon">Frontend<wbr>Prerender<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendruncommand.html" class="tsd-kind-icon">Frontend<wbr>Run<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendtestcommand.html" class="tsd-kind-icon">Frontend<wbr>Test<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontenduninstallcommand.html" class="tsd-kind-icon">Frontend<wbr>Uninstall<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/googleactivecommand.html" class="tsd-kind-icon">Google<wbr>Active<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/googlecommand.html" class="tsd-kind-icon">Google<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/googleconnectcommand.html" class="tsd-kind-icon">Google<wbr>Connect<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/googledisconnectcommand.html" class="tsd-kind-icon">Google<wbr>Disconnect<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/googlelistcommand.html" class="tsd-kind-icon">Google<wbr>List<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/googleservice.html" class="tsd-kind-icon">Google<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
@@ -147,6 +352,42 @@
 						<a href="classes/messageservice.html" class="tsd-kind-icon">Message<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/newcommand.html" class="tsd-kind-icon">New<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectbuildcommand.html" class="tsd-kind-icon">Project<wbr>Build<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectcommand.html" class="tsd-kind-icon">Project<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectconfigscommand.html" class="tsd-kind-icon">Project<wbr>Configs<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectdeploycommand.html" class="tsd-kind-icon">Project<wbr>Deploy<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectinfocommand.html" class="tsd-kind-icon">Project<wbr>Info<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectlintcommand.html" class="tsd-kind-icon">Project<wbr>Lint<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectpreviewcommand.html" class="tsd-kind-icon">Project<wbr>Preview<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projectsetupcommand.html" class="tsd-kind-icon">Project<wbr>Setup<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projecttestcommand.html" class="tsd-kind-icon">Project<wbr>Test<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projecturlcommand.html" class="tsd-kind-icon">Project<wbr>Url<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/projecturlscommand.html" class="tsd-kind-icon">Project<wbr>Urls<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
 					</li>
 					<li class=" tsd-kind-class">
@@ -156,22 +397,52 @@
 						<a href="classes/updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/databasecommandoptions.html" class="tsd-kind-icon">Database<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/filecopyrequestbody.html" class="tsd-kind-icon">File<wbr>Copy<wbr>Request<wbr>Body</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/helpoptions.html" class="tsd-kind-icon">Help<wbr>Options</a>
+						<a href="interfaces/googleaccount.html" class="tsd-kind-icon">Google<wbr>Account</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/googleaccountprofile.html" class="tsd-kind-icon">Google<wbr>Account<wbr>Profile</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/googleaccounts.html" class="tsd-kind-icon">Google<wbr>Accounts</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/googleconnectcommandoptions.html" class="tsd-kind-icon">Google<wbr>Connect<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/helpcommandoptions.html" class="tsd-kind-icon">Help<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/newcommandoptions.html" class="tsd-kind-icon">New<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/projectcommandoptions.html" class="tsd-kind-icon">Project<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/projectsetupcommandoptions.html" class="tsd-kind-icon">Project<wbr>Setup<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/projecturlcommandoptions.html" class="tsd-kind-icon">Project<wbr>Url<wbr>Command<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/system.html" class="tsd-kind-icon">System</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/updateoptions.html" class="tsd-kind-icon">Update<wbr>Options</a>
+						<a href="interfaces/updatecommandoptions.html" class="tsd-kind-icon">Update<wbr>Command<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#commanddef" class="tsd-kind-icon">Command<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#googlecommandoptions" class="tsd-kind-icon">Google<wbr>Command<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#cliapp" class="tsd-kind-icon">cli<wbr>App</a>

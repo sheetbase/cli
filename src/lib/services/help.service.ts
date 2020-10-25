@@ -11,7 +11,7 @@ export class HelpService {
 
     ${green('google [subcommand]')} ........ Manage Google accounts.
     ${green('database [subcommand]')} ...... Manage the database.
-    ${green('start [name] [resource]')} .... Start a new project.
+    ${green('new [name] [source]')} ........ Start a new project.
     ${green('docs')} ....................... Open the documentation.
     ${green('update')} ..................... Check and install update.
     ${green('help')} ....................... Display help.
@@ -19,6 +19,7 @@ export class HelpService {
 
   Project commands:
 
+    ${green('new')} ........................ Start a new project.
     ${green('setup')} ...................... Setup the project.
     ${green('configs')} .................... View project configs.
     ${green('config [subcommand]')} ........ Config the project.
@@ -76,7 +77,7 @@ export class HelpService {
     return (
       '' +
       `
-    ${green('start [name] [resource]')} .... Start a new project.
+    ${green('new [name] [source]')} ........ Start a new project.
     ${green('setup')} ...................... Setup the project.
     ${green('configs')} .................... View project configs.
     ${green('config [subcommand]')} ........ Config the project.

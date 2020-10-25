@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>HelpOptions | @sheetbase/cli</title>
+	<title>GoogleAccount | @sheetbase/cli</title>
 	<meta name="description" content="Documentation for @sheetbase/cli">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="helpoptions.html">HelpOptions</a>
+					<a href="googleaccount.html">GoogleAccount</a>
 				</li>
 			</ul>
-			<h1>Interface HelpOptions</h1>
+			<h1>Interface GoogleAccount</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">HelpOptions</span>
+						<span class="target">GoogleAccount</span>
 					</li>
 				</ul>
 			</section>
@@ -79,7 +79,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="helpoptions.html#detail" class="tsd-kind-icon">detail</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleaccount.html#fulldrive" class="tsd-kind-icon">full<wbr>Drive</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleaccount.html#grantedat" class="tsd-kind-icon">granted<wbr>At</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleaccount.html#profile" class="tsd-kind-icon">profile</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleaccount.html#refreshtoken" class="tsd-kind-icon">refresh<wbr>Token</a></li>
 							</ul>
 						</section>
 					</div>
@@ -88,12 +91,42 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="detail" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> detail</h3>
-					<div class="tsd-signature tsd-kind-icon">detail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<a name="fulldrive" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> full<wbr>Drive</h3>
+					<div class="tsd-signature tsd-kind-icon">full<wbr>Drive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/df4d101/src/cli/commands/help.command.ts#L7">cli/commands/help.command.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/lib/services/google.service.ts#L21">lib/services/google.service.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="grantedat" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> granted<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">granted<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/lib/services/google.service.ts#L20">lib/services/google.service.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="profile" class="tsd-anchor"></a>
+					<h3>profile</h3>
+					<div class="tsd-signature tsd-kind-icon">profile<span class="tsd-signature-symbol">:</span> <a href="googleaccountprofile.html" class="tsd-signature-type">GoogleAccountProfile</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/lib/services/google.service.ts#L19">lib/services/google.service.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="refreshtoken" class="tsd-anchor"></a>
+					<h3>refresh<wbr>Token</h3>
+					<div class="tsd-signature tsd-kind-icon">refresh<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/1f0fbda/src/lib/services/google.service.ts#L18">lib/services/google.service.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -109,96 +142,27 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="../classes/builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/cli.html" class="tsd-kind-icon">Cli</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/docscommand.html" class="tsd-kind-icon">Docs<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/driveservice.html" class="tsd-kind-icon">Drive<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/helpcommand.html" class="tsd-kind-icon">Help<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/helpservice.html" class="tsd-kind-icon">Help<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/helperservice.html" class="tsd-kind-icon">Helper<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/lib.html" class="tsd-kind-icon">Lib</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/messageservice.html" class="tsd-kind-icon">Message<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/terminalservice.html" class="tsd-kind-icon">Terminal<wbr>Service</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/unknowncommand.html" class="tsd-kind-icon">Unknown<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="filecopyrequestbody.html" class="tsd-kind-icon">File<wbr>Copy<wbr>Request<wbr>Body</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="helpoptions.html" class="tsd-kind-icon">Help<wbr>Options</a>
+						<a href="googleaccount.html" class="tsd-kind-icon">Google<wbr>Account</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="helpoptions.html#detail" class="tsd-kind-icon">detail</a>
+								<a href="googleaccount.html#fulldrive" class="tsd-kind-icon">full<wbr>Drive</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="googleaccount.html#grantedat" class="tsd-kind-icon">granted<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="googleaccount.html#profile" class="tsd-kind-icon">profile</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="googleaccount.html#refreshtoken" class="tsd-kind-icon">refresh<wbr>Token</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="system.html" class="tsd-kind-icon">System</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="updateoptions.html" class="tsd-kind-icon">Update<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#commanddef" class="tsd-kind-icon">Command<wbr>Def</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#cliapp" class="tsd-kind-icon">cli<wbr>App</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#config" class="tsd-kind-icon">config</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#error" class="tsd-kind-icon">error</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#info" class="tsd-kind-icon">info</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#ok" class="tsd-kind-icon">ok</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#open" class="tsd-kind-icon">open</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#ttytable" class="tsd-kind-icon">tty<wbr>Table</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#wait" class="tsd-kind-icon">wait</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#warn" class="tsd-kind-icon">warn</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
