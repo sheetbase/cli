@@ -1,7 +1,7 @@
 export class ConfigImportCommand {
   constructor() {}
 
-  run() {
+  run(filePath: string) {
     console.log('TODO: ...');
   }
 }

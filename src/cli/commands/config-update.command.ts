@@ -1,7 +1,7 @@
 export class ConfigUpdateCommand {
   constructor() {}
 
-  run() {
+  run(input: string[]) {
     console.log('TODO: ...');
   }
 }

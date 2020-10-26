@@ -127,10 +127,6 @@ export class Cli {
     ['-d, --detail', 'Show detail help.'],
   ];
 
-  /**
-   * @param subCommand? - Supported sub-command.
-   * @param params...? - Params for sub-command.
-   */
   googleCommandDef: CommandDef = [
     ['google [subCommand] [params...]', 'gg'],
     'Manage Google accounts.',
@@ -179,10 +175,6 @@ export class Cli {
     ['-s, --skip-setup', 'Skip project setup.'],
   ];
 
-  /**
-   * @param subCommand? - Supported sub-command.
-   * @param params...? - Params for sub-command.
-   */
   projectCommandDef: CommandDef = [
     ['project [subCommand] [params...]', 'p'],
     'Project related tasks.',
@@ -244,10 +236,6 @@ export class Cli {
     ['-m, --message [value]', 'Deployment message.'],
   ];
 
-  /**
-   * @param subCommand? - Supported sub-command.
-   * @param params...? - Params for sub-command.
-   */
   configCommandDef: CommandDef = [
     ['config [subCommand] [params...]', 'c'],
     'Config the project.',
@@ -255,13 +243,19 @@ export class Cli {
 
   configListCommandDef: CommandDef = ['config-list', 'List configurations.'];
 
+  /**
+   * @param input...? - List of input.
+   */
   configUpdateCommandDef: CommandDef = [
-    'config-update',
+    'config-update [input...]',
     'Update configurations.',
   ];
 
+  /**
+   * @param path - Path to .json file.
+   */
   configImportCommandDef: CommandDef = [
-    'config-import',
+    'config-import <path>',
     'Import configurations.',
   ];
 
@@ -270,10 +264,6 @@ export class Cli {
     'Export configurations.',
   ];
 
-  /**
-   * @param subCommand? - Supported sub-command.
-   * @param params...? - Params for sub-command.
-   */
   backendCommandDef: CommandDef = [
     ['backend [subCommand] [params...]', 'b'],
     'Backend related tasks.',
@@ -304,10 +294,6 @@ export class Cli {
 
   backendRunCommandDef: CommandDef = ['backend-run', 'Run backend scripts.'];
 
-  /**
-   * @param subCommand? - Supported sub-command.
-   * @param params...? - Params for sub-command.
-   */
   frontendCommandDef: CommandDef = [
     ['frontend [subCommand] [params...]', 'f'],
     'Frontend related tasks.',
@@ -344,10 +330,6 @@ export class Cli {
 
   frontendRunCommandDef: CommandDef = ['frontend-run', 'Run frontend scripts.'];
 
-  /**
-   * @param subCommand? - Supported sub-command.
-   * @param params...? - Params for sub-command.
-   */
   databaseCommandDef: CommandDef = [
     ['database [subCommand] [params...]', 'db'],
     'Manage the database.',
@@ -364,10 +346,10 @@ export class Cli {
   ];
 
   /**
-   * @param inputs...? - List of table names, ex.: categories posts ...
+   * @param input...? - List of table names, ex.: categories posts ...
    */
   databaseCreateCommandDef: CommandDef = [
-    'database-create [inputs...]',
+    'database-create [input...]',
     'Create tables in the database.',
     ['-i, --id [value]', 'Custom database id.'],
     ['-d, --data', 'Create table with sample data.'],
@@ -760,7 +742,7 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.configUpdateCommand.run());
+        .action(input => this.configUpdateCommand.run(input));
     })();
 
     // config-import
@@ -769,7 +751,7 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.configImportCommand.run());
+        .action(path => this.configImportCommand.run(path));
     })();
 
     // config-export
@@ -999,8 +981,8 @@ export class Cli {
         .description(description)
         .option(...idOpt)
         .option(...dataOpt)
-        .action((inputs, options) =>
-          this.databaseCreateCommand.run(inputs, options)
+        .action((input, options) =>
+          this.databaseCreateCommand.run(input, options)
         );
     })();
 

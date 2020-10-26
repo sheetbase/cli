@@ -6,7 +6,7 @@ export interface DatabaseCreateCommandOptions {
 export class DatabaseCreateCommand {
   constructor() {}
 
-  run(inputs: string[], commandOptions: DatabaseCreateCommandOptions) {
+  run(input: string[], commandOptions: DatabaseCreateCommandOptions) {
     console.log('TODO: ...');
   }
 }
