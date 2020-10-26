@@ -112,17 +112,17 @@ export class Cli {
     'Any other command will run: `npm run <cmd>`.',
   ];
 
-  docsCommandDef: CommandDef = ['docs', 'Open documentation.'];
+  docsCommandDef: CommandDef = [['docs', 'd'], 'Open documentation.'];
 
   updateCommandDef: CommandDef = [
-    ['update', 'upgrade', 'up'],
+    ['update', 'up'],
     'Update the CLI to the latest version.',
     ['-y, --yes', 'Do update now.'],
     ['-s, --self', 'Update the CLI itself.'],
   ];
 
   helpCommandDef: CommandDef = [
-    ['help', 'usage', 'he'],
+    ['help', 'he'],
     'Display help.',
     ['-d, --detail', 'Show detail help.'],
   ];
@@ -157,7 +157,7 @@ export class Cli {
    */
   googleDisconnectCommandDef: CommandDef = [
     'google-disconnect <input>',
-    'Disconnect an account.',
+    'Disconnect connected accounts.',
   ];
 
   /**
@@ -211,9 +211,9 @@ export class Cli {
 
   projectInfoCommandDef: CommandDef = ['project-info', 'Output project info.'];
 
-  projectLintCommandDef: CommandDef = ['project-lint', 'Run linting.'];
+  projectLintCommandDef: CommandDef = ['project-lint', 'Lint the project.'];
 
-  projectTestCommandDef: CommandDef = ['project-test', 'Run testing.'];
+  projectTestCommandDef: CommandDef = ['project-test', 'Test the project.'];
 
   projectBuildCommandDef: CommandDef = ['project-build', 'Build the project.'];
 
@@ -236,21 +236,21 @@ export class Cli {
     'Config the project.',
   ];
 
-  configListCommandDef: CommandDef = ['config-list', 'Command description.'];
+  configListCommandDef: CommandDef = ['config-list', 'List configurations.'];
 
   configUpdateCommandDef: CommandDef = [
     'config-update',
-    'Command description.',
+    'Update configurations.',
   ];
 
   configImportCommandDef: CommandDef = [
     'config-import',
-    'Command description.',
+    'Import configurations.',
   ];
 
   configExportCommandDef: CommandDef = [
     'config-export',
-    'Command description.',
+    'Export configurations.',
   ];
 
   /**
@@ -262,33 +262,30 @@ export class Cli {
     'Backend related tasks.',
   ];
 
-  backendLintCommandDef: CommandDef = ['backend-lint', 'Command description.'];
+  backendLintCommandDef: CommandDef = ['backend-lint', 'Lint the backend.'];
 
-  backendTestCommandDef: CommandDef = ['backend-test', 'Command description.'];
+  backendTestCommandDef: CommandDef = ['backend-test', 'Test the backend.'];
 
-  backendBuildCommandDef: CommandDef = [
-    'backend-build',
-    'Command description.',
-  ];
+  backendBuildCommandDef: CommandDef = ['backend-build', 'Build the backend.'];
 
-  backendPushCommandDef: CommandDef = ['backend-push', 'Command description.'];
+  backendPushCommandDef: CommandDef = ['backend-push', 'Push the backend.'];
 
   backendDeployCommandDef: CommandDef = [
     'backend-deploy',
-    'Command description.',
+    'Deploy the backend.',
   ];
 
   backendInstallCommandDef: CommandDef = [
     'backend-install',
-    'Command description.',
+    'Install backend dependencies.',
   ];
 
   backendUninstallCommandDef: CommandDef = [
     'backend-uninstall',
-    'Command description.',
+    'Uninstall backend dependencies.',
   ];
 
-  backendRunCommandDef: CommandDef = ['backend-run', 'Command description.'];
+  backendRunCommandDef: CommandDef = ['backend-run', 'Run backend scripts.'];
 
   /**
    * @param subCommand? - Supported sub-command.
@@ -299,42 +296,36 @@ export class Cli {
     'Frontend related tasks.',
   ];
 
-  frontendLintCommandDef: CommandDef = [
-    'frontend-lint',
-    'Command description.',
-  ];
+  frontendLintCommandDef: CommandDef = ['frontend-lint', 'Lint the frontend.'];
 
-  frontendTestCommandDef: CommandDef = [
-    'frontend-test',
-    'Command description.',
-  ];
+  frontendTestCommandDef: CommandDef = ['frontend-test', 'Test the frontend.'];
 
   frontendBuildCommandDef: CommandDef = [
     'frontend-build',
-    'Command description.',
+    'Build the frontend.',
   ];
 
   frontendPrerenderCommandDef: CommandDef = [
     'frontend-prerender',
-    'Command description.',
+    'Prerender the frontend.',
   ];
 
   frontendDeployCommandDef: CommandDef = [
     'frontend-deploy',
-    'Command description.',
+    'Deploy the frontend.',
   ];
 
   frontendInstallCommandDef: CommandDef = [
     'frontend-install',
-    'Command description.',
+    'Install frontend dependencies.',
   ];
 
   frontendUninstallCommandDef: CommandDef = [
     'frontend-uninstall',
-    'Command description.',
+    'Uninstall frontend dependencies.',
   ];
 
-  frontendRunCommandDef: CommandDef = ['frontend-run', 'Command description.'];
+  frontendRunCommandDef: CommandDef = ['frontend-run', 'Run frontend scripts.'];
 
   /**
    * @param subCommand? - Supported sub-command.
@@ -470,9 +461,10 @@ export class Cli {
 
     // docs
     (() => {
-      const [command, description] = this.docsCommandDef;
+      const [[command, ...aliases], description] = this.docsCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.docsCommand.run());
     })();
