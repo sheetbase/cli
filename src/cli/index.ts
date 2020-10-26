@@ -192,13 +192,13 @@ export class Cli {
   ];
 
   projectSetupCommandDef: CommandDef = [
-    'project-setup',
+    ['project-setup', 'setup'],
     'Setup the project.',
     ['-r, --fresh', 'Force re-setup.'],
   ];
 
   projectConfigsCommandDef: CommandDef = [
-    'project-configs',
+    ['project-configs', 'configs'],
     'View project configs.',
   ];
 
@@ -208,26 +208,38 @@ export class Cli {
    * @param name - The url name.
    */
   projectUrlCommandDef: CommandDef = [
-    'project-url <name>',
+    ['project-url <name>', 'url'],
     'View or open a project URL.',
     ['-o, --open', 'Open the url in browser.'],
   ];
 
-  projectInfoCommandDef: CommandDef = ['project-info', 'Output project info.'];
+  projectInfoCommandDef: CommandDef = [
+    ['project-info', 'info'],
+    'Output project info.',
+  ];
 
-  projectLintCommandDef: CommandDef = ['project-lint', 'Lint the project.'];
+  projectLintCommandDef: CommandDef = [
+    ['project-lint', 'lint'],
+    'Lint the project.',
+  ];
 
-  projectTestCommandDef: CommandDef = ['project-test', 'Test the project.'];
+  projectTestCommandDef: CommandDef = [
+    ['project-test', 'test'],
+    'Test the project.',
+  ];
 
-  projectBuildCommandDef: CommandDef = ['project-build', 'Build the project.'];
+  projectBuildCommandDef: CommandDef = [
+    ['project-build', 'build'],
+    'Build the project.',
+  ];
 
   projectPreviewCommandDef: CommandDef = [
-    'project-preview',
+    ['project-preview', 'preview'],
     'Preview the project.',
   ];
 
   projectDeployCommandDef: CommandDef = [
-    'project-deploy',
+    ['project-deploy', 'deploy'],
     'Deploy the project.',
     ['-m, --message', 'Deployment message.'],
   ];
@@ -612,90 +624,110 @@ export class Cli {
 
     // project-setup
     (() => {
-      const [command, description] = this.projectSetupCommandDef;
+      const [[command, ...aliases], description] = this.projectSetupCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(options => this.projectSetupCommand.run(options));
     })();
 
     // project-configs
     (() => {
-      const [command, description] = this.projectConfigsCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+      ] = this.projectConfigsCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectConfigsCommand.run());
     })();
 
     // project-urls
     (() => {
-      const [command, description] = this.projectUrlsCommandDef;
+      const [[command, ...aliases], description] = this.projectUrlsCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectUrlsCommand.run());
     })();
 
     // project-url
     (() => {
-      const [command, description] = this.projectUrlCommandDef;
+      const [[command, ...aliases], description] = this.projectUrlCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action((name, options) => this.projectUrlCommand.run(name, options));
     })();
 
     // project-info
     (() => {
-      const [command, description] = this.projectInfoCommandDef;
+      const [[command, ...aliases], description] = this.projectInfoCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectInfoCommand.run());
     })();
 
     // project-lint
     (() => {
-      const [command, description] = this.projectLintCommandDef;
+      const [[command, ...aliases], description] = this.projectLintCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectLintCommand.run());
     })();
 
     // project-test
     (() => {
-      const [command, description] = this.projectTestCommandDef;
+      const [[command, ...aliases], description] = this.projectTestCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectTestCommand.run());
     })();
 
     // project-build
     (() => {
-      const [command, description] = this.projectBuildCommandDef;
+      const [[command, ...aliases], description] = this.projectBuildCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectBuildCommand.run());
     })();
 
     // project-preview
     (() => {
-      const [command, description] = this.projectPreviewCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+      ] = this.projectPreviewCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .action(() => this.projectPreviewCommand.run());
     })();
 
     // project-deploy
     (() => {
-      const [command, description, messageOpt] = this.projectDeployCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        messageOpt,
+      ] = this.projectDeployCommandDef;
       commander
-        .command(command as string)
+        .command(command)
+        .aliases(aliases)
         .description(description)
         .option(...messageOpt)
         .action(options => this.projectDeployCommand.run(options));
