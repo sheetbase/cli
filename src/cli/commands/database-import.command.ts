@@ -1,5 +1,15 @@
+export interface DatabaseImportCommandOptions {
+  id?: string;
+}
+
 export class DatabaseImportCommand {
   constructor() {}
 
-  run() {}
+  run(
+    tableName: string,
+    inputSource: string,
+    commandOptions: DatabaseImportCommandOptions
+  ) {
+    const source = inputSource || tableName;
+  }
 }

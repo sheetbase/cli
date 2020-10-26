@@ -344,27 +344,45 @@ export class Cli {
     ['database [subCommand] [params...]', 'db'],
     'Manage the database.',
     ['-i, --id [value]', 'Custom database id.'],
-    ['-d, --data', 'Create table with sample data.'],
+    ['-r, --remote', '(list) List remote tables.'],
+    ['-d, --data', '(create) Create table with sample data.'],
   ];
 
   databaseListCommandDef: CommandDef = [
     'database-list',
-    'Command description.',
+    'List local or remote models.',
+    ['-i, --id [value]', 'Custom database id.'],
+    ['-r, --remote', 'List remote tables.'],
   ];
 
+  /**
+   * @param inputs...? - List of table names, ex.: categories posts ...
+   */
   databaseCreateCommandDef: CommandDef = [
-    'database-create',
-    'Command description.',
+    'database-create [inputs...]',
+    'Create tables in the database.',
+    ['-i, --id [value]', 'Custom database id.'],
+    ['-d, --data', 'Create table with sample data.'],
   ];
 
+  /**
+   * @param table - The table name.
+   * @param source? - Source to the data or default.
+   */
   databaseImportCommandDef: CommandDef = [
-    'database-import',
-    'Command description.',
+    'database-import <table> [source]',
+    'Import data to the database.',
+    ['-i, --id [value]', 'Custom database id.'],
   ];
 
+  /**
+   * @param table - The table name.
+   * @param dir? - Custom export folder.
+   */
   databaseExportCommandDef: CommandDef = [
-    'database-export',
-    'Command description.',
+    'database-export <table> [dir]',
+    'Export data from the database.',
+    ['-i, --id [value]', 'Custom database id.'],
   ];
 
   constructor() {
@@ -391,7 +409,6 @@ export class Cli {
       this.googleActiveCommand
     );
     this.newCommand = new NewCommand();
-    this.projectCommand = new ProjectCommand();
     this.projectSetupCommand = new ProjectSetupCommand();
     this.projectConfigsCommand = new ProjectConfigsCommand();
     this.projectUrlsCommand = new ProjectUrlsCommand();
@@ -402,12 +419,12 @@ export class Cli {
     this.projectBuildCommand = new ProjectBuildCommand();
     this.projectPreviewCommand = new ProjectPreviewCommand();
     this.projectDeployCommand = new ProjectDeployCommand();
-    this.configCommand = new ConfigCommand();
+    this.projectCommand = new ProjectCommand();
     this.configListCommand = new ConfigListCommand();
     this.configUpdateCommand = new ConfigUpdateCommand();
     this.configImportCommand = new ConfigImportCommand();
     this.configExportCommand = new ConfigExportCommand();
-    this.backendCommand = new BackendCommand();
+    this.configCommand = new ConfigCommand();
     this.backendLintCommand = new BackendLintCommand();
     this.backendTestCommand = new BackendTestCommand();
     this.backendBuildCommand = new BackendBuildCommand();
@@ -416,7 +433,7 @@ export class Cli {
     this.backendInstallCommand = new BackendInstallCommand();
     this.backendUninstallCommand = new BackendUninstallCommand();
     this.backendRunCommand = new BackendRunCommand();
-    this.frontendCommand = new FrontendCommand();
+    this.backendCommand = new BackendCommand();
     this.frontendLintCommand = new FrontendLintCommand();
     this.frontendTestCommand = new FrontendTestCommand();
     this.frontendBuildCommand = new FrontendBuildCommand();
@@ -425,11 +442,19 @@ export class Cli {
     this.frontendInstallCommand = new FrontendInstallCommand();
     this.frontendUninstallCommand = new FrontendUninstallCommand();
     this.frontendRunCommand = new FrontendRunCommand();
-    this.databaseCommand = new DatabaseCommand();
+    this.frontendCommand = new FrontendCommand();
     this.databaseListCommand = new DatabaseListCommand();
     this.databaseCreateCommand = new DatabaseCreateCommand();
     this.databaseImportCommand = new DatabaseImportCommand();
     this.databaseExportCommand = new DatabaseExportCommand();
+    this.databaseCommand = new DatabaseCommand(
+      this.cliModule.messageService,
+      this.cliModule.helpService,
+      this.databaseListCommand,
+      this.databaseCreateCommand,
+      this.databaseImportCommand,
+      this.databaseExportCommand
+    );
   }
 
   getApp() {
@@ -867,11 +892,20 @@ export class Cli {
 
     // database
     (() => {
-      const [[command, ...aliases], description] = this.databaseCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        idOpt,
+        dataOpt,
+        remoteOpt,
+      ] = this.databaseCommandDef;
       commander
         .command(command)
         .aliases(aliases)
         .description(description)
+        .option(...idOpt)
+        .option(...dataOpt)
+        .option(...remoteOpt)
         .action((subCommand, params, options) =>
           this.databaseCommand.run(subCommand, params, options)
         );
@@ -879,38 +913,60 @@ export class Cli {
 
     // database-list
     (() => {
-      const [command, description] = this.databaseListCommandDef;
+      const [
+        command,
+        description,
+        idOpt,
+        remoteOpt,
+      ] = this.databaseListCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.databaseListCommand.run());
+        .option(...idOpt)
+        .option(...remoteOpt)
+        .action(options => this.databaseListCommand.run(options));
     })();
 
     // database-create
     (() => {
-      const [command, description] = this.databaseCreateCommandDef;
+      const [
+        command,
+        description,
+        idOpt,
+        dataOpt,
+      ] = this.databaseCreateCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.databaseCreateCommand.run());
+        .option(...idOpt)
+        .option(...dataOpt)
+        .action((inputs, options) =>
+          this.databaseCreateCommand.run(inputs, options)
+        );
     })();
 
     // database-import
     (() => {
-      const [command, description] = this.databaseImportCommandDef;
+      const [command, description, idOpt] = this.databaseImportCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.databaseImportCommand.run());
+        .option(...idOpt)
+        .action((table, source, options) =>
+          this.databaseImportCommand.run(table, source, options)
+        );
     })();
 
     // database-export
     (() => {
-      const [command, description] = this.databaseExportCommandDef;
+      const [command, description, idOpt] = this.databaseExportCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.databaseExportCommand.run());
+        .option(...idOpt)
+        .action((table, dir, options) =>
+          this.databaseExportCommand.run(table, dir, options)
+        );
     })();
 
     // help
