@@ -303,6 +303,9 @@ export class Cli {
   frontendCommandDef: CommandDef = [
     ['frontend [subCommand] [params...]', 'f'],
     'Frontend related tasks.',
+    ['-m, --message [value]', '(deploy) Deployment message.'],
+    ['-o, --only [value]', '(prerender) Prerender only certain parts.'],
+    ['-f, --force [value]', '(prerender) Force prerender all or parts.'],
   ];
 
   frontendLintCommandDef: CommandDef = ['frontend-lint', 'Lint the frontend.'];
@@ -317,11 +320,14 @@ export class Cli {
   frontendPrerenderCommandDef: CommandDef = [
     'frontend-prerender',
     'Prerender the frontend.',
+    ['-o, --only [value]', 'Prerender only certain parts.'],
+    ['-f, --force [value]', 'Force prerender all or certain parts.'],
   ];
 
   frontendDeployCommandDef: CommandDef = [
     'frontend-deploy',
     'Deploy the frontend.',
+    ['-m, --message [value]', 'Deployment message.'],
   ];
 
   frontendInstallCommandDef: CommandDef = [
@@ -885,11 +891,20 @@ export class Cli {
 
     // frontend
     (() => {
-      const [[command, ...aliases], description] = this.frontendCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        messageOpt,
+        onlyOpt,
+        forceOpt,
+      ] = this.frontendCommandDef;
       commander
         .command(command)
         .aliases(aliases)
         .description(description)
+        .option(...messageOpt)
+        .option(...onlyOpt)
+        .option(...forceOpt)
         .action((subCommand, params, options) =>
           this.frontendCommand.run(subCommand, params, options)
         );
@@ -924,20 +939,28 @@ export class Cli {
 
     // frontend-prerender
     (() => {
-      const [command, description] = this.frontendPrerenderCommandDef;
+      const [
+        command,
+        description,
+        onlyOpt,
+        forceOpt,
+      ] = this.frontendPrerenderCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.frontendPrerenderCommand.run());
+        .option(...onlyOpt)
+        .option(...forceOpt)
+        .action(options => this.frontendPrerenderCommand.run(options));
     })();
 
     // frontend-deploy
     (() => {
-      const [command, description] = this.frontendDeployCommandDef;
+      const [command, description, messageOpt] = this.frontendDeployCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.frontendDeployCommand.run());
+        .option(...messageOpt)
+        .action(options => this.frontendDeployCommand.run(options));
     })();
 
     // frontend-install

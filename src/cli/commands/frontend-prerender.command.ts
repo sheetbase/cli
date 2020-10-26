@@ -1,7 +1,12 @@
+interface FrontendPrerenderCommandOptions {
+  only?: string;
+  force?: string;
+}
+
 export class FrontendPrerenderCommand {
   constructor() {}
 
-  run() {
+  run(commandOptions: FrontendPrerenderCommandOptions) {
     console.log('TODO: ...');
   }
 }

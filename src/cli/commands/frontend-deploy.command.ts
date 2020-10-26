@@ -1,7 +1,11 @@
+interface FrontendDeployCommandOptions {
+  message?: string;
+}
+
 export class FrontendDeployCommand {
   constructor() {}
 
-  run() {
+  run(commandOptions: FrontendDeployCommandOptions) {
     console.log('TODO: ...');
   }
 }
