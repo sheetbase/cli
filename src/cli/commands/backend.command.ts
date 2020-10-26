@@ -1,7 +1,65 @@
-export class BackendCommand {
-  constructor() {}
+import {BackendLintCommand} from './backend-lint.command';
+import {BackendTestCommand} from './backend-test.command';
+import {BackendBuildCommand} from './backend-build.command';
+import {BackendPushCommand} from './backend-push.command';
+import {BackendDeployCommand} from './backend-deploy.command';
+import {BackendInstallCommand} from './backend-install.command';
+import {BackendUninstallCommand} from './backend-uninstall.command';
+import {BackendRunCommand} from './backend-run.command';
+import {BackendUnknownCommand} from './backend-unknown.command';
 
-  run(subCommand: string, params: string[]) {
-    console.log('TODO: ...');
+type BackendCommandOptions = {};
+
+export class BackendCommand {
+  constructor(
+    private backendLintCommand: BackendLintCommand,
+    private backendTestCommand: BackendTestCommand,
+    private backendBuildCommand: BackendBuildCommand,
+    private backendPushCommand: BackendPushCommand,
+    private backendDeployCommand: BackendDeployCommand,
+    private backendInstallCommand: BackendInstallCommand,
+    private backendUninstallCommand: BackendUninstallCommand,
+    private backendRunCommand: BackendRunCommand,
+    private backendUnknownCommand: BackendUnknownCommand
+  ) {}
+
+  run(
+    subCommand: string,
+    params: string[],
+    commandOptions: BackendCommandOptions
+  ) {
+    const backendDir = 'backend';
+    const commanderRawArgs = commandOptions['parent']['rawArgs'];
+    switch (subCommand) {
+      case 'lint':
+        this.backendLintCommand.run();
+        break;
+      case 'test':
+        this.backendTestCommand.run();
+        break;
+      case 'build':
+        this.backendBuildCommand.run();
+        break;
+      case 'push':
+        this.backendPushCommand.run();
+        break;
+      case 'deploy':
+        this.backendDeployCommand.run();
+        break;
+      case 'install':
+      case 'i':
+        this.backendInstallCommand.run();
+        break;
+      case 'uninstall':
+      case 'un':
+        this.backendUninstallCommand.run();
+        break;
+      case 'run':
+        this.backendRunCommand.run();
+        break;
+      default:
+        this.backendUnknownCommand.run();
+        break;
+    }
   }
 }

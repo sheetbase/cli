@@ -1,7 +1,11 @@
+interface BackendDeployCommandOptions {
+  message?: string;
+}
+
 export class BackendDeployCommand {
   constructor() {}
 
-  run() {
+  run(commandOptions: BackendDeployCommandOptions) {
     console.log('TODO: ...');
   }
 }

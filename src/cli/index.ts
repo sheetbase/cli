@@ -37,6 +37,7 @@ import {BackendDeployCommand} from './commands/backend-deploy.command';
 import {BackendInstallCommand} from './commands/backend-install.command';
 import {BackendUninstallCommand} from './commands/backend-uninstall.command';
 import {BackendRunCommand} from './commands/backend-run.command';
+import {BackendUnknownCommand} from './commands/backend-unknown.command';
 import {FrontendCommand} from './commands/frontend.command';
 import {FrontendLintCommand} from './commands/frontend-lint.command';
 import {FrontendTestCommand} from './commands/frontend-test.command';
@@ -46,6 +47,7 @@ import {FrontendDeployCommand} from './commands/frontend-deploy.command';
 import {FrontendInstallCommand} from './commands/frontend-install.command';
 import {FrontendUninstallCommand} from './commands/frontend-uninstall.command';
 import {FrontendRunCommand} from './commands/frontend-run.command';
+import {FrontendUnknownCommand} from './commands/frontend-unknown.command';
 import {DatabaseCommand} from './commands/database.command';
 import {DatabaseListCommand} from './commands/database-list.command';
 import {DatabaseCreateCommand} from './commands/database-create.command';
@@ -90,6 +92,7 @@ export class Cli {
   backendInstallCommand: BackendInstallCommand;
   backendUninstallCommand: BackendUninstallCommand;
   backendRunCommand: BackendRunCommand;
+  backendUnknownCommand: BackendUnknownCommand;
   frontendCommand: FrontendCommand;
   frontendLintCommand: FrontendLintCommand;
   frontendTestCommand: FrontendTestCommand;
@@ -99,6 +102,7 @@ export class Cli {
   frontendInstallCommand: FrontendInstallCommand;
   frontendUninstallCommand: FrontendUninstallCommand;
   frontendRunCommand: FrontendRunCommand;
+  frontendUnknownCommand: FrontendUnknownCommand;
   databaseCommand: DatabaseCommand;
   databaseListCommand: DatabaseListCommand;
   databaseCreateCommand: DatabaseCreateCommand;
@@ -115,14 +119,14 @@ export class Cli {
   docsCommandDef: CommandDef = [['docs', 'd'], 'Open documentation.'];
 
   updateCommandDef: CommandDef = [
-    ['update', 'up'],
+    ['update', 'u'],
     'Update the CLI to the latest version.',
     ['-y, --yes', 'Do update now.'],
     ['-s, --self', 'Update the CLI itself.'],
   ];
 
   helpCommandDef: CommandDef = [
-    ['help', 'he'],
+    ['help', 'h'],
     'Display help.',
     ['-d, --detail', 'Show detail help.'],
   ];
@@ -267,6 +271,7 @@ export class Cli {
   backendCommandDef: CommandDef = [
     ['backend [subCommand] [params...]', 'b'],
     'Backend related tasks.',
+    ['-m, --message [value]', '(deploy) Deployment message.'],
   ];
 
   backendLintCommandDef: CommandDef = ['backend-lint', 'Lint the backend.'];
@@ -280,6 +285,7 @@ export class Cli {
   backendDeployCommandDef: CommandDef = [
     'backend-deploy',
     'Deploy the backend.',
+    ['-m, --message [value]', 'Deployment message.'],
   ];
 
   backendInstallCommandDef: CommandDef = [
@@ -427,7 +433,14 @@ export class Cli {
     this.configUpdateCommand = new ConfigUpdateCommand();
     this.configImportCommand = new ConfigImportCommand();
     this.configExportCommand = new ConfigExportCommand();
-    this.configCommand = new ConfigCommand();
+    this.configCommand = new ConfigCommand(
+      this.cliModule.messageService,
+      this.cliModule.helpService,
+      this.configListCommand,
+      this.configUpdateCommand,
+      this.configImportCommand,
+      this.configExportCommand
+    );
     this.backendLintCommand = new BackendLintCommand();
     this.backendTestCommand = new BackendTestCommand();
     this.backendBuildCommand = new BackendBuildCommand();
@@ -436,7 +449,18 @@ export class Cli {
     this.backendInstallCommand = new BackendInstallCommand();
     this.backendUninstallCommand = new BackendUninstallCommand();
     this.backendRunCommand = new BackendRunCommand();
-    this.backendCommand = new BackendCommand();
+    this.backendUnknownCommand = new BackendUnknownCommand();
+    this.backendCommand = new BackendCommand(
+      this.backendLintCommand,
+      this.backendTestCommand,
+      this.backendBuildCommand,
+      this.backendPushCommand,
+      this.backendDeployCommand,
+      this.backendInstallCommand,
+      this.backendUninstallCommand,
+      this.backendRunCommand,
+      this.backendUnknownCommand
+    );
     this.frontendLintCommand = new FrontendLintCommand();
     this.frontendTestCommand = new FrontendTestCommand();
     this.frontendBuildCommand = new FrontendBuildCommand();
@@ -445,7 +469,18 @@ export class Cli {
     this.frontendInstallCommand = new FrontendInstallCommand();
     this.frontendUninstallCommand = new FrontendUninstallCommand();
     this.frontendRunCommand = new FrontendRunCommand();
-    this.frontendCommand = new FrontendCommand();
+    this.frontendUnknownCommand = new FrontendUnknownCommand();
+    this.frontendCommand = new FrontendCommand(
+      this.frontendLintCommand,
+      this.frontendTestCommand,
+      this.frontendBuildCommand,
+      this.frontendPrerenderCommand,
+      this.frontendDeployCommand,
+      this.frontendInstallCommand,
+      this.frontendUninstallCommand,
+      this.frontendRunCommand,
+      this.frontendUnknownCommand
+    );
     this.databaseListCommand = new DatabaseListCommand();
     this.databaseCreateCommand = new DatabaseCreateCommand();
     this.databaseImportCommand = new DatabaseImportCommand();
@@ -770,8 +805,8 @@ export class Cli {
         .command(command)
         .aliases(aliases)
         .description(description)
-        .action((subCommand, params) =>
-          this.backendCommand.run(subCommand, params)
+        .action((subCommand, params, options) =>
+          this.backendCommand.run(subCommand, params, options)
         );
     })();
 
@@ -813,11 +848,12 @@ export class Cli {
 
     // backend-deploy
     (() => {
-      const [command, description] = this.backendDeployCommandDef;
+      const [command, description, messageOpt] = this.backendDeployCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.backendDeployCommand.run());
+        .option(...messageOpt)
+        .action(options => this.backendDeployCommand.run(options));
     })();
 
     // backend-install
@@ -854,8 +890,8 @@ export class Cli {
         .command(command)
         .aliases(aliases)
         .description(description)
-        .action((subCommand, params) =>
-          this.frontendCommand.run(subCommand, params)
+        .action((subCommand, params, options) =>
+          this.frontendCommand.run(subCommand, params, options)
         );
     })();
 
