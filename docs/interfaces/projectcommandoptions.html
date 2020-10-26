@@ -68,7 +68,18 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ProjectCommandOptions</span>
+						<a href="projectsetupcommandoptions.html" class="tsd-signature-type">ProjectSetupCommandOptions</a>
+					</li>
+					<li>
+						<a href="projecturlcommandoptions.html" class="tsd-signature-type">ProjectUrlCommandOptions</a>
+					</li>
+					<li>
+						<a href="projectdeploycommandoptions.html" class="tsd-signature-type">ProjectDeployCommandOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ProjectCommandOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -76,35 +87,49 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectcommandoptions.html#fresh" class="tsd-kind-icon">fresh</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="projectcommandoptions.html#open" class="tsd-kind-icon">open</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="projectcommandoptions.html#fresh" class="tsd-kind-icon">fresh</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="projectcommandoptions.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="projectcommandoptions.html#open" class="tsd-kind-icon">open</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="fresh" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fresh</h3>
 					<div class="tsd-signature tsd-kind-icon">fresh<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="projectsetupcommandoptions.html">ProjectSetupCommandOptions</a>.<a href="projectsetupcommandoptions.html#fresh">fresh</a></p>
 						<ul>
-							<li>Defined in cli/commands/project.command.ts:2</li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/b49adb9/src/cli/commands/project-setup.command.ts#L2">cli/commands/project-setup.command.ts:2</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="message" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="projectdeploycommandoptions.html">ProjectDeployCommandOptions</a>.<a href="projectdeploycommandoptions.html#message">message</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/b49adb9/src/cli/commands/project-deploy.command.ts#L2">cli/commands/project-deploy.command.ts:2</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="open" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> open</h3>
 					<div class="tsd-signature tsd-kind-icon">open<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="projecturlcommandoptions.html">ProjectUrlCommandOptions</a>.<a href="projecturlcommandoptions.html#open">open</a></p>
 						<ul>
-							<li>Defined in cli/commands/project.command.ts:3</li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/b49adb9/src/cli/commands/project-url.command.ts#L2">cli/commands/project-url.command.ts:2</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,10 +150,13 @@
 					<li class="current tsd-kind-interface">
 						<a href="projectcommandoptions.html" class="tsd-kind-icon">Project<wbr>Command<wbr>Options</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="projectcommandoptions.html#fresh" class="tsd-kind-icon">fresh</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="projectcommandoptions.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="projectcommandoptions.html#open" class="tsd-kind-icon">open</a>
 							</li>
 						</ul>

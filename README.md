@@ -73,14 +73,14 @@ Official CLI for working with Sheetbase.
 
 - [`sheetbase backend|b [subCommand] [params...]`](#command-backend)
 - [`sheetbase config|c [subCommand] [params...]`](#command-config)
-- [`sheetbase database|db [subCommand] [params...] --id [value] --data`](#command-database)
-- [`sheetbase docs`](#command-docs)
+- [`sheetbase database|db [subCommand] [params...] --id [value] --remote --data`](#command-database)
+- [`sheetbase docs|d`](#command-docs)
 - [`sheetbase frontend|f [subCommand] [params...]`](#command-frontend)
 - [`sheetbase google|gg [subCommand] [params...] --yes --creds --full-drive`](#command-google)
 - [`sheetbase new|start|n <name> [source] --skip-install --skip-setup`](#command-new)
-- [`sheetbase project|p [subCommand] [params...] --fresh --open`](#command-project)
-- [`sheetbase update|upgrade|up --yes --self`](#command-update)
-- [`sheetbase help|usage|he --detail`](#command-help)
+- [`sheetbase project|p [subCommand] [params...] --fresh --open --message`](#command-project)
+- [`sheetbase update|up --yes --self`](#command-update)
+- [`sheetbase help|he --detail`](#command-help)
 - [`sheetbase *`](#command-*)
 
 <h2><a name="cli-command-reference"><p>Command reference</p>
@@ -103,7 +103,7 @@ sheetbase b [subCommand] [params...]
 <h4><a name="command-backend-build"><p><code>build</code></p>
 </a></h4>
 
-Command description.
+Build the backend.
 
 **Usage:**
 
@@ -120,7 +120,7 @@ sheetbase backend-build
 <h4><a name="command-backend-deploy"><p><code>deploy</code></p>
 </a></h4>
 
-Command description.
+Deploy the backend.
 
 **Usage:**
 
@@ -137,7 +137,7 @@ sheetbase backend-deploy
 <h4><a name="command-backend-install"><p><code>install</code></p>
 </a></h4>
 
-Command description.
+Install backend dependencies.
 
 **Usage:**
 
@@ -154,7 +154,7 @@ sheetbase backend-install
 <h4><a name="command-backend-lint"><p><code>lint</code></p>
 </a></h4>
 
-Command description.
+Lint the backend.
 
 **Usage:**
 
@@ -171,7 +171,7 @@ sheetbase backend-lint
 <h4><a name="command-backend-push"><p><code>push</code></p>
 </a></h4>
 
-Command description.
+Push the backend.
 
 **Usage:**
 
@@ -188,7 +188,7 @@ sheetbase backend-push
 <h4><a name="command-backend-run"><p><code>run</code></p>
 </a></h4>
 
-Command description.
+Run backend scripts.
 
 **Usage:**
 
@@ -205,7 +205,7 @@ sheetbase backend-run
 <h4><a name="command-backend-test"><p><code>test</code></p>
 </a></h4>
 
-Command description.
+Test the backend.
 
 **Usage:**
 
@@ -222,7 +222,7 @@ sheetbase backend-test
 <h4><a name="command-backend-uninstall"><p><code>uninstall</code></p>
 </a></h4>
 
-Command description.
+Uninstall backend dependencies.
 
 **Usage:**
 
@@ -253,7 +253,7 @@ sheetbase c [subCommand] [params...]
 <h4><a name="command-config-export"><p><code>export</code></p>
 </a></h4>
 
-Command description.
+Export configurations.
 
 **Usage:**
 
@@ -270,7 +270,7 @@ sheetbase config-export
 <h4><a name="command-config-import"><p><code>import</code></p>
 </a></h4>
 
-Command description.
+Import configurations.
 
 **Usage:**
 
@@ -287,7 +287,7 @@ sheetbase config-import
 <h4><a name="command-config-list"><p><code>list</code></p>
 </a></h4>
 
-Command description.
+List configurations.
 
 **Usage:**
 
@@ -304,7 +304,7 @@ sheetbase config-list
 <h4><a name="command-config-update"><p><code>update</code></p>
 </a></h4>
 
-Command description.
+Update configurations.
 
 **Usage:**
 
@@ -326,8 +326,8 @@ Manage the database.
 **Usage:**
 
 ```sh
-sheetbase database [subCommand] [params...] --id [value] --data
-sheetbase db [subCommand] [params...] --id [value] --data
+sheetbase database [subCommand] [params...] --id [value] --remote --data
+sheetbase db [subCommand] [params...] --id [value] --remote --data
 ```
 
 **Sub-commands:**
@@ -335,70 +335,109 @@ sheetbase db [subCommand] [params...] --id [value] --data
 <h4><a name="command-database-create"><p><code>create</code></p>
 </a></h4>
 
-Command description.
+Create tables in the database.
 
 **Usage:**
 
 ```sh
-sheetbase database create
+sheetbase database create [inputs...] --id [value] --data
+sheetbase database new [inputs...] --id [value] --data
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase database-create
+sheetbase database-create [inputs...] --id [value] --data
 ```
+
+**Parameters:**
+
+- `[inputs...]`: List of table names, ex.: categories posts ...
+
+**Options:**
+
+- `-i, --id [value]`: Custom database id.
+- `-d, --data`: Create table with sample data.
 
 <h4><a name="command-database-export"><p><code>export</code></p>
 </a></h4>
 
-Command description.
+Export data from the database.
 
 **Usage:**
 
 ```sh
-sheetbase database export
+sheetbase database export <table> [dir] --id [value]
+sheetbase database download <table> [dir] --id [value]
+sheetbase database ex <table> [dir] --id [value]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase database-export
+sheetbase database-export <table> [dir] --id [value]
 ```
+
+**Parameters:**
+
+- `<table>`: The table name.
+- `[dir]`: Custom export folder.
+
+**Options:**
+
+- `-i, --id [value]`: Custom database id.
 
 <h4><a name="command-database-import"><p><code>import</code></p>
 </a></h4>
 
-Command description.
+Import data to the database.
 
 **Usage:**
 
 ```sh
-sheetbase database import
+sheetbase database import <table> [source] --id [value]
+sheetbase database upload <table> [source] --id [value]
+sheetbase database im <table> [source] --id [value]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase database-import
+sheetbase database-import <table> [source] --id [value]
 ```
+
+**Parameters:**
+
+- `<table>`: The table name.
+- `[source]`: Source to the data or default.
+
+**Options:**
+
+- `-i, --id [value]`: Custom database id.
 
 <h4><a name="command-database-list"><p><code>list</code></p>
 </a></h4>
 
-Command description.
+List local or remote models.
 
 **Usage:**
 
 ```sh
-sheetbase database list
+sheetbase database list --id [value] --remote
+sheetbase database show --id [value] --remote
+sheetbase database ls --id [value] --remote
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase database-list
+sheetbase database-list --id [value] --remote
 ```
+
+**Options:**
+
+- `-i, --id [value]`: Custom database id.
+- `-r, --remote`: List remote tables.
 
 <h3><a name="command-docs"><p><code>docs</code></p>
 </a></h3>
@@ -409,6 +448,7 @@ Open documentation.
 
 ```sh
 sheetbase docs
+sheetbase d
 ```
 
 <h3><a name="command-frontend"><p><code>frontend</code></p>
@@ -428,7 +468,7 @@ sheetbase f [subCommand] [params...]
 <h4><a name="command-frontend-build"><p><code>build</code></p>
 </a></h4>
 
-Command description.
+Build the frontend.
 
 **Usage:**
 
@@ -445,7 +485,7 @@ sheetbase frontend-build
 <h4><a name="command-frontend-deploy"><p><code>deploy</code></p>
 </a></h4>
 
-Command description.
+Deploy the frontend.
 
 **Usage:**
 
@@ -462,7 +502,7 @@ sheetbase frontend-deploy
 <h4><a name="command-frontend-install"><p><code>install</code></p>
 </a></h4>
 
-Command description.
+Install frontend dependencies.
 
 **Usage:**
 
@@ -479,7 +519,7 @@ sheetbase frontend-install
 <h4><a name="command-frontend-lint"><p><code>lint</code></p>
 </a></h4>
 
-Command description.
+Lint the frontend.
 
 **Usage:**
 
@@ -496,7 +536,7 @@ sheetbase frontend-lint
 <h4><a name="command-frontend-prerender"><p><code>prerender</code></p>
 </a></h4>
 
-Command description.
+Prerender the frontend.
 
 **Usage:**
 
@@ -513,7 +553,7 @@ sheetbase frontend-prerender
 <h4><a name="command-frontend-run"><p><code>run</code></p>
 </a></h4>
 
-Command description.
+Run frontend scripts.
 
 **Usage:**
 
@@ -530,7 +570,7 @@ sheetbase frontend-run
 <h4><a name="command-frontend-test"><p><code>test</code></p>
 </a></h4>
 
-Command description.
+Test the frontend.
 
 **Usage:**
 
@@ -547,7 +587,7 @@ sheetbase frontend-test
 <h4><a name="command-frontend-uninstall"><p><code>uninstall</code></p>
 </a></h4>
 
-Command description.
+Uninstall frontend dependencies.
 
 **Usage:**
 
@@ -626,7 +666,7 @@ sheetbase google-connect --yes --creds --full-drive
 <h4><a name="command-google-disconnect"><p><code>disconnect</code></p>
 </a></h4>
 
-Disconnect an account.
+Disconnect connected accounts.
 
 **Usage:**
 
@@ -696,8 +736,8 @@ Project related tasks.
 **Usage:**
 
 ```sh
-sheetbase project [subCommand] [params...] --fresh --open
-sheetbase p [subCommand] [params...] --fresh --open
+sheetbase project [subCommand] [params...] --fresh --open --message
+sheetbase p [subCommand] [params...] --fresh --open --message
 ```
 
 **Sub-commands:**
@@ -717,6 +757,7 @@ sheetbase project build
 
 ```sh
 sheetbase project-build
+sheetbase build
 ```
 
 <h4><a name="command-project-configs"><p><code>configs</code></p>
@@ -734,6 +775,7 @@ sheetbase project configs
 
 ```sh
 sheetbase project-configs
+sheetbase configs
 ```
 
 <h4><a name="command-project-deploy"><p><code>deploy</code></p>
@@ -744,14 +786,19 @@ Deploy the project.
 **Usage:**
 
 ```sh
-sheetbase project deploy
+sheetbase project deploy --message
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase project-deploy
+sheetbase project-deploy --message
+sheetbase deploy --message
 ```
+
+**Options:**
+
+- `-m, --message`: Deployment message.
 
 <h4><a name="command-project-info"><p><code>info</code></p>
 </a></h4>
@@ -768,12 +815,13 @@ sheetbase project info
 
 ```sh
 sheetbase project-info
+sheetbase info
 ```
 
 <h4><a name="command-project-lint"><p><code>lint</code></p>
 </a></h4>
 
-Run linting.
+Lint the project.
 
 **Usage:**
 
@@ -785,6 +833,7 @@ sheetbase project lint
 
 ```sh
 sheetbase project-lint
+sheetbase lint
 ```
 
 <h4><a name="command-project-preview"><p><code>preview</code></p>
@@ -802,6 +851,7 @@ sheetbase project preview
 
 ```sh
 sheetbase project-preview
+sheetbase preview
 ```
 
 <h4><a name="command-project-setup"><p><code>setup</code></p>
@@ -819,6 +869,7 @@ sheetbase project setup --fresh
 
 ```sh
 sheetbase project-setup --fresh
+sheetbase setup --fresh
 ```
 
 **Options:**
@@ -828,7 +879,7 @@ sheetbase project-setup --fresh
 <h4><a name="command-project-test"><p><code>test</code></p>
 </a></h4>
 
-Run testing.
+Test the project.
 
 **Usage:**
 
@@ -840,6 +891,7 @@ sheetbase project test
 
 ```sh
 sheetbase project-test
+sheetbase test
 ```
 
 <h4><a name="command-project-url"><p><code>url</code></p>
@@ -857,11 +909,12 @@ sheetbase project url <name> --open
 
 ```sh
 sheetbase project-url <name> --open
+sheetbase url <name> --open
 ```
 
 **Parameters:**
 
-- `<name>`: The `<name>` parameter.
+- `<name>`: The url name.
 
 **Options:**
 
@@ -893,7 +946,6 @@ Update the CLI to the latest version.
 
 ```sh
 sheetbase update --yes --self
-sheetbase upgrade --yes --self
 sheetbase up --yes --self
 ```
 
@@ -911,7 +963,6 @@ Display help.
 
 ```sh
 sheetbase help --detail
-sheetbase usage --detail
 sheetbase he --detail
 ```
 

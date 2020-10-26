@@ -68,7 +68,21 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">DatabaseCommandOptions</span>
+						<a href="databaselistcommandoptions.html" class="tsd-signature-type">DatabaseListCommandOptions</a>
+					</li>
+					<li>
+						<a href="databasecreatecommandoptions.html" class="tsd-signature-type">DatabaseCreateCommandOptions</a>
+					</li>
+					<li>
+						<a href="databaseimportcommandoptions.html" class="tsd-signature-type">DatabaseImportCommandOptions</a>
+					</li>
+					<li>
+						<a href="databaseexportcommandoptions.html" class="tsd-signature-type">DatabaseExportCommandOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">DatabaseCommandOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -76,35 +90,50 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="databasecommandoptions.html#data" class="tsd-kind-icon">data</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="databasecommandoptions.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="databasecommandoptions.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited"><a href="databasecommandoptions.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="databasecommandoptions.html#remote" class="tsd-kind-icon">remote</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="data" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data</h3>
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="databasecreatecommandoptions.html">DatabaseCreateCommandOptions</a>.<a href="databasecreatecommandoptions.html#data">data</a></p>
 						<ul>
-							<li>Defined in cli/commands/database.command.ts:3</li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/b49adb9/src/cli/commands/database-create.command.ts#L3">cli/commands/database-create.command.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="databaselistcommandoptions.html">DatabaseListCommandOptions</a>.<a href="databaselistcommandoptions.html#id">id</a></p>
+						<p>Overrides <a href="databasecreatecommandoptions.html">DatabaseCreateCommandOptions</a>.<a href="databasecreatecommandoptions.html#id">id</a></p>
 						<ul>
-							<li>Defined in cli/commands/database.command.ts:2</li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/b49adb9/src/cli/commands/database-list.command.ts#L2">cli/commands/database-list.command.ts:2</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="remote" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> remote</h3>
+					<div class="tsd-signature tsd-kind-icon">remote<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="databaselistcommandoptions.html">DatabaseListCommandOptions</a>.<a href="databaselistcommandoptions.html#remote">remote</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/b49adb9/src/cli/commands/database-list.command.ts#L3">cli/commands/database-list.command.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,11 +154,14 @@
 					<li class="current tsd-kind-interface">
 						<a href="databasecommandoptions.html" class="tsd-kind-icon">Database<wbr>Command<wbr>Options</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="databasecommandoptions.html#data" class="tsd-kind-icon">data</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-inherited">
 								<a href="databasecommandoptions.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="databasecommandoptions.html#remote" class="tsd-kind-icon">remote</a>
 							</li>
 						</ul>
 					</li>
