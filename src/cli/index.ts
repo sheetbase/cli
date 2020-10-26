@@ -188,6 +188,7 @@ export class Cli {
     'Project related tasks.',
     ['-r, --fresh', '(setup) Force re-setup.'],
     ['-o, --open', '(url) Open the url in browser.'],
+    ['-m, --message', '(deploy) Deployment message.'],
   ];
 
   projectSetupCommandDef: CommandDef = [
@@ -203,6 +204,9 @@ export class Cli {
 
   projectUrlsCommandDef: CommandDef = ['project-urls', 'View project URLs.'];
 
+  /**
+   * @param name - The url name.
+   */
   projectUrlCommandDef: CommandDef = [
     'project-url <name>',
     'View or open a project URL.',
@@ -225,6 +229,7 @@ export class Cli {
   projectDeployCommandDef: CommandDef = [
     'project-deploy',
     'Deploy the project.',
+    ['-m, --message', 'Deployment message.'],
   ];
 
   /**
@@ -410,7 +415,20 @@ export class Cli {
     this.projectBuildCommand = new ProjectBuildCommand();
     this.projectPreviewCommand = new ProjectPreviewCommand();
     this.projectDeployCommand = new ProjectDeployCommand();
-    this.projectCommand = new ProjectCommand();
+    this.projectCommand = new ProjectCommand(
+      this.cliModule.messageService,
+      this.cliModule.helpService,
+      this.projectSetupCommand,
+      this.projectConfigsCommand,
+      this.projectUrlsCommand,
+      this.projectUrlCommand,
+      this.projectInfoCommand,
+      this.projectLintCommand,
+      this.projectTestCommand,
+      this.projectBuildCommand,
+      this.projectPreviewCommand,
+      this.projectDeployCommand
+    );
     this.configListCommand = new ConfigListCommand();
     this.configUpdateCommand = new ConfigUpdateCommand();
     this.configImportCommand = new ConfigImportCommand();
@@ -554,11 +572,18 @@ export class Cli {
 
     // new
     (() => {
-      const [[command, ...aliases], description] = this.newCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        skipInstallOpt,
+        skipSetupOpt,
+      ] = this.newCommandDef;
       commander
         .command(command)
         .aliases(aliases)
         .description(description)
+        .option(...skipInstallOpt)
+        .option(...skipSetupOpt)
         .action((name, source, options) =>
           this.newCommand.run(name, source, options)
         );
@@ -566,11 +591,20 @@ export class Cli {
 
     // project
     (() => {
-      const [[command, ...aliases], description] = this.projectCommandDef;
+      const [
+        [command, ...aliases],
+        description,
+        freshOpt,
+        openOpt,
+        messageOpt,
+      ] = this.projectCommandDef;
       commander
         .command(command)
         .aliases(aliases)
         .description(description)
+        .option(...freshOpt)
+        .option(...openOpt)
+        .option(...messageOpt)
         .action((subCommand, params, options) =>
           this.projectCommand.run(subCommand, params, options)
         );
@@ -609,7 +643,7 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(options => this.projectUrlCommand.run(options));
+        .action((name, options) => this.projectUrlCommand.run(name, options));
     })();
 
     // project-info
@@ -659,11 +693,12 @@ export class Cli {
 
     // project-deploy
     (() => {
-      const [command, description] = this.projectDeployCommandDef;
+      const [command, description, messageOpt] = this.projectDeployCommandDef;
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.projectDeployCommand.run());
+        .option(...messageOpt)
+        .action(options => this.projectDeployCommand.run(options));
     })();
 
     // config

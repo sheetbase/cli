@@ -1,4 +1,4 @@
-interface ProjectSetupCommandOptions {
+export interface ProjectSetupCommandOptions {
   fresh?: boolean;
 }
 

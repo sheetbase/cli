@@ -1,7 +1,11 @@
+export interface ProjectDeployCommandOptions {
+  message?: string;
+}
+
 export class ProjectDeployCommand {
   constructor() {}
 
-  run() {
+  run(commandOptions: ProjectDeployCommandOptions) {
     console.log('TODO: ...');
   }
 }
