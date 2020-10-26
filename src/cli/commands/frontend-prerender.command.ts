@@ -1,4 +1,4 @@
-interface FrontendPrerenderCommandOptions {
+export interface FrontendPrerenderCommandOptions {
   only?: string;
   force?: string;
 }

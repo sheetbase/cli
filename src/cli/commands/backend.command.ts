@@ -2,13 +2,16 @@ import {BackendLintCommand} from './backend-lint.command';
 import {BackendTestCommand} from './backend-test.command';
 import {BackendBuildCommand} from './backend-build.command';
 import {BackendPushCommand} from './backend-push.command';
-import {BackendDeployCommand} from './backend-deploy.command';
+import {
+  BackendDeployCommand,
+  BackendDeployCommandOptions,
+} from './backend-deploy.command';
 import {BackendInstallCommand} from './backend-install.command';
 import {BackendUninstallCommand} from './backend-uninstall.command';
 import {BackendRunCommand} from './backend-run.command';
 import {BackendUnknownCommand} from './backend-unknown.command';
 
-type BackendCommandOptions = {};
+type BackendCommandOptions = BackendDeployCommandOptions;
 
 export class BackendCommand {
   constructor(
@@ -28,8 +31,6 @@ export class BackendCommand {
     params: string[],
     commandOptions: BackendCommandOptions
   ) {
-    const backendDir = 'backend';
-    const commanderRawArgs = commandOptions['parent']['rawArgs'];
     switch (subCommand) {
       case 'lint':
         this.backendLintCommand.run();
@@ -44,7 +45,7 @@ export class BackendCommand {
         this.backendPushCommand.run();
         break;
       case 'deploy':
-        this.backendDeployCommand.run();
+        this.backendDeployCommand.run(commandOptions);
         break;
       case 'install':
       case 'i':

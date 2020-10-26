@@ -1,14 +1,22 @@
 import {FrontendLintCommand} from './frontend-lint.command';
 import {FrontendTestCommand} from './frontend-test.command';
 import {FrontendBuildCommand} from './frontend-build.command';
-import {FrontendPrerenderCommand} from './frontend-prerender.command';
-import {FrontendDeployCommand} from './frontend-deploy.command';
+import {
+  FrontendPrerenderCommand,
+  FrontendPrerenderCommandOptions,
+} from './frontend-prerender.command';
+import {
+  FrontendDeployCommand,
+  FrontendDeployCommandOptions,
+} from './frontend-deploy.command';
 import {FrontendInstallCommand} from './frontend-install.command';
 import {FrontendUninstallCommand} from './frontend-uninstall.command';
 import {FrontendRunCommand} from './frontend-run.command';
 import {FrontendUnknownCommand} from './frontend-unknown.command';
 
-type FrontendCommandOptions = {};
+interface FrontendCommandOptions
+  extends FrontendPrerenderCommandOptions,
+    FrontendDeployCommandOptions {}
 
 export class FrontendCommand {
   constructor(
@@ -28,8 +36,6 @@ export class FrontendCommand {
     params: string[],
     commandOptions: FrontendCommandOptions
   ) {
-    const backendDir = 'frontend';
-    const commanderRawArgs = commandOptions['parent']['rawArgs'];
     switch (subCommand) {
       case 'lint':
         this.frontendLintCommand.run();
@@ -41,10 +47,10 @@ export class FrontendCommand {
         this.frontendBuildCommand.run();
         break;
       case 'prerender':
-        this.frontendPrerenderCommand.run();
+        this.frontendPrerenderCommand.run(commandOptions);
         break;
       case 'deploy':
-        this.frontendDeployCommand.run();
+        this.frontendDeployCommand.run(commandOptions);
         break;
       case 'install':
       case 'i':

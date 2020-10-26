@@ -1,4 +1,4 @@
-interface FrontendDeployCommandOptions {
+export interface FrontendDeployCommandOptions {
   message?: string;
 }
 

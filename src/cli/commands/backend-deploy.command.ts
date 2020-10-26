@@ -1,4 +1,4 @@
-interface BackendDeployCommandOptions {
+export interface BackendDeployCommandOptions {
   message?: string;
 }
 
