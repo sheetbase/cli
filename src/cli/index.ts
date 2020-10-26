@@ -188,7 +188,7 @@ export class Cli {
     'Project related tasks.',
     ['-r, --fresh', '(setup) Force re-setup.'],
     ['-o, --open', '(url) Open the url in browser.'],
-    ['-m, --message', '(deploy) Deployment message.'],
+    ['-m, --message [value]', '(deploy) Deployment message.'],
   ];
 
   projectSetupCommandDef: CommandDef = [
@@ -241,7 +241,7 @@ export class Cli {
   projectDeployCommandDef: CommandDef = [
     ['project-deploy', 'deploy'],
     'Deploy the project.',
-    ['-m, --message', 'Deployment message.'],
+    ['-m, --message [value]', 'Deployment message.'],
   ];
 
   /**

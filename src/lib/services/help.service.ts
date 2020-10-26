@@ -152,10 +152,10 @@ export class HelpService {
     return (
       '' +
       `
-    ${green('list')} ....................... List tables and models.
-    ${green('create')} ..................... Create database tables.
-    ${green('import')} ..................... Import data to a sheet.
-    ${green('export')} ..................... Export data from a sheet.`
+    ${green('list')} ......................... List tables and models.
+    ${green('create [inputs...]')} ........... Create database tables.
+    ${green('import <table> [source]')} ...... Import data to a sheet.
+    ${green('export <table> [dir]')} ......... Export data from a sheet.`
     );
   }
 }

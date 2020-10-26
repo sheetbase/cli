@@ -78,7 +78,7 @@ Official CLI for working with Sheetbase.
 - [`sheetbase frontend|f [subCommand] [params...]`](#command-frontend)
 - [`sheetbase google|gg [subCommand] [params...] --yes --creds --full-drive`](#command-google)
 - [`sheetbase new|start|n <name> [source] --skip-install --skip-setup`](#command-new)
-- [`sheetbase project|p [subCommand] [params...] --fresh --open --message`](#command-project)
+- [`sheetbase project|p [subCommand] [params...] --fresh --open --message [value]`](#command-project)
 - [`sheetbase update|up --yes --self`](#command-update)
 - [`sheetbase help|he --detail`](#command-help)
 - [`sheetbase *`](#command-*)
@@ -736,8 +736,8 @@ Project related tasks.
 **Usage:**
 
 ```sh
-sheetbase project [subCommand] [params...] --fresh --open --message
-sheetbase p [subCommand] [params...] --fresh --open --message
+sheetbase project [subCommand] [params...] --fresh --open --message [value]
+sheetbase p [subCommand] [params...] --fresh --open --message [value]
 ```
 
 **Sub-commands:**
@@ -786,19 +786,19 @@ Deploy the project.
 **Usage:**
 
 ```sh
-sheetbase project deploy --message
+sheetbase project deploy --message [value]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase project-deploy --message
-sheetbase deploy --message
+sheetbase project-deploy --message [value]
+sheetbase deploy --message [value]
 ```
 
 **Options:**
 
-- `-m, --message`: Deployment message.
+- `-m, --message [value]`: Deployment message.
 
 <h4><a name="command-project-info"><p><code>info</code></p>
 </a></h4>
