@@ -143,16 +143,16 @@
 					</a></h2>
 					<p>Official CLI for working with Sheetbase.</p>
 					<ul>
-						<li><a href="#command-backend"><code>sheetbase backend|b [subCommand] [params...]</code></a></li>
+						<li><a href="#command-backend"><code>sheetbase backend|b [subCommand] [params...] --message [value]</code></a></li>
 						<li><a href="#command-config"><code>sheetbase config|c [subCommand] [params...]</code></a></li>
 						<li><a href="#command-database"><code>sheetbase database|db [subCommand] [params...] --id [value] --remote --data</code></a></li>
 						<li><a href="#command-docs"><code>sheetbase docs|d</code></a></li>
-						<li><a href="#command-frontend"><code>sheetbase frontend|f [subCommand] [params...]</code></a></li>
+						<li><a href="#command-frontend"><code>sheetbase frontend|f [subCommand] [params...] --message [value] --only [value] --force [value]</code></a></li>
 						<li><a href="#command-google"><code>sheetbase google|gg [subCommand] [params...] --yes --creds --full-drive</code></a></li>
 						<li><a href="#command-new"><code>sheetbase new|start|n &lt;name&gt; [source] --skip-install --skip-setup</code></a></li>
-						<li><a href="#command-project"><code>sheetbase project|p [subCommand] [params...] --fresh --open --message</code></a></li>
-						<li><a href="#command-update"><code>sheetbase update|up --yes --self</code></a></li>
-						<li><a href="#command-help"><code>sheetbase help|he --detail</code></a></li>
+						<li><a href="#command-project"><code>sheetbase project|p [subCommand] [params...] --fresh --open --message [value]</code></a></li>
+						<li><a href="#command-update"><code>sheetbase update|u --yes --self</code></a></li>
+						<li><a href="#command-help"><code>sheetbase help|h --detail</code></a></li>
 						<li><a href="#command-*"><code>sheetbase *</code></a></li>
 					</ul>
 					<h2><a name="cli-command-reference"><p>Command reference</p>
@@ -161,8 +161,8 @@
 					</a></h3>
 					<p>Backend related tasks.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase backend [subCommand] [params...]
-sheetbase b [subCommand] [params...]</code></pre>
+					<pre><code class="language-sh">sheetbase backend [subCommand] [params...] --message [value]
+sheetbase b [subCommand] [params...] --message [value]</code></pre>
 					<p><strong>Sub-commands:</strong></p>
 					<h4><a name="command-backend-build"><p><code>build</code></p>
 					</a></h4>
@@ -175,14 +175,19 @@ sheetbase b [subCommand] [params...]</code></pre>
 					</a></h4>
 					<p>Deploy the backend.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase backend deploy</code></pre>
+					<pre><code class="language-sh">sheetbase backend deploy --message [value]</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase backend-deploy</code></pre>
+					<pre><code class="language-sh">sheetbase backend-deploy --message [value]</code></pre>
+					<p><strong>Options:</strong></p>
+					<ul>
+						<li><code>-m, --message [value]</code>: Deployment message.</li>
+					</ul>
 					<h4><a name="command-backend-install"><p><code>install</code></p>
 					</a></h4>
 					<p>Install backend dependencies.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase backend install</code></pre>
+					<pre><code class="language-sh">sheetbase backend install
+sheetbase backend i</code></pre>
 					<p><strong>Proxy use:</strong></p>
 					<pre><code class="language-sh">sheetbase backend-install</code></pre>
 					<h4><a name="command-backend-lint"><p><code>lint</code></p>
@@ -217,7 +222,8 @@ sheetbase b [subCommand] [params...]</code></pre>
 					</a></h4>
 					<p>Uninstall backend dependencies.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase backend uninstall</code></pre>
+					<pre><code class="language-sh">sheetbase backend uninstall
+sheetbase backend un</code></pre>
 					<p><strong>Proxy use:</strong></p>
 					<pre><code class="language-sh">sheetbase backend-uninstall</code></pre>
 					<h3><a name="command-config"><p><code>config</code></p>
@@ -231,30 +237,42 @@ sheetbase c [subCommand] [params...]</code></pre>
 					</a></h4>
 					<p>Export configurations.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase config <span class="hljs-built_in">export</span></code></pre>
+					<pre><code class="language-sh">sheetbase config <span class="hljs-built_in">export</span>
+sheetbase config ex</code></pre>
 					<p><strong>Proxy use:</strong></p>
 					<pre><code class="language-sh">sheetbase config-export</code></pre>
 					<h4><a name="command-config-import"><p><code>import</code></p>
 					</a></h4>
 					<p>Import configurations.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase config import</code></pre>
+					<pre><code class="language-sh">sheetbase config import &lt;path&gt;
+sheetbase config im &lt;path&gt;</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase config-import</code></pre>
+					<pre><code class="language-sh">sheetbase config-import &lt;path&gt;</code></pre>
+					<p><strong>Parameters:</strong></p>
+					<ul>
+						<li><code>&lt;path&gt;</code>: Path to .json file.</li>
+					</ul>
 					<h4><a name="command-config-list"><p><code>list</code></p>
 					</a></h4>
 					<p>List configurations.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase config list</code></pre>
+					<pre><code class="language-sh">sheetbase config list
+sheetbase config ls</code></pre>
 					<p><strong>Proxy use:</strong></p>
 					<pre><code class="language-sh">sheetbase config-list</code></pre>
 					<h4><a name="command-config-update"><p><code>update</code></p>
 					</a></h4>
 					<p>Update configurations.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase config update</code></pre>
+					<pre><code class="language-sh">sheetbase config update [input...]
+sheetbase config <span class="hljs-built_in">set</span> [input...]</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase config-update</code></pre>
+					<pre><code class="language-sh">sheetbase config-update [input...]</code></pre>
+					<p><strong>Parameters:</strong></p>
+					<ul>
+						<li><code>[input...]</code>: List of input.</li>
+					</ul>
 					<h3><a name="command-database"><p><code>database</code></p>
 					</a></h3>
 					<p>Manage the database.</p>
@@ -266,13 +284,13 @@ sheetbase db [subCommand] [params...] --id [value] --remote --data</code></pre>
 					</a></h4>
 					<p>Create tables in the database.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase database create [inputs...] --id [value] --data
-sheetbase database new [inputs...] --id [value] --data</code></pre>
+					<pre><code class="language-sh">sheetbase database create [input...] --id [value] --data
+sheetbase database new [input...] --id [value] --data</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase database-create [inputs...] --id [value] --data</code></pre>
+					<pre><code class="language-sh">sheetbase database-create [input...] --id [value] --data</code></pre>
 					<p><strong>Parameters:</strong></p>
 					<ul>
-						<li><code>[inputs...]</code>: List of table names, ex.: categories posts ...</li>
+						<li><code>[input...]</code>: List of table names, ex.: categories posts ...</li>
 					</ul>
 					<p><strong>Options:</strong></p>
 					<ul>
@@ -339,8 +357,8 @@ sheetbase d</code></pre>
 					</a></h3>
 					<p>Frontend related tasks.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend [subCommand] [params...]
-sheetbase f [subCommand] [params...]</code></pre>
+					<pre><code class="language-sh">sheetbase frontend [subCommand] [params...] --message [value] --only [value] --force [value]
+sheetbase f [subCommand] [params...] --message [value] --only [value] --force [value]</code></pre>
 					<p><strong>Sub-commands:</strong></p>
 					<h4><a name="command-frontend-build"><p><code>build</code></p>
 					</a></h4>
@@ -353,14 +371,19 @@ sheetbase f [subCommand] [params...]</code></pre>
 					</a></h4>
 					<p>Deploy the frontend.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend deploy</code></pre>
+					<pre><code class="language-sh">sheetbase frontend deploy --message [value]</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend-deploy</code></pre>
+					<pre><code class="language-sh">sheetbase frontend-deploy --message [value]</code></pre>
+					<p><strong>Options:</strong></p>
+					<ul>
+						<li><code>-m, --message [value]</code>: Deployment message.</li>
+					</ul>
 					<h4><a name="command-frontend-install"><p><code>install</code></p>
 					</a></h4>
 					<p>Install frontend dependencies.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend install</code></pre>
+					<pre><code class="language-sh">sheetbase frontend install
+sheetbase frontend i</code></pre>
 					<p><strong>Proxy use:</strong></p>
 					<pre><code class="language-sh">sheetbase frontend-install</code></pre>
 					<h4><a name="command-frontend-lint"><p><code>lint</code></p>
@@ -374,9 +397,14 @@ sheetbase f [subCommand] [params...]</code></pre>
 					</a></h4>
 					<p>Prerender the frontend.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend prerender</code></pre>
+					<pre><code class="language-sh">sheetbase frontend prerender --only [value] --force [value]</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend-prerender</code></pre>
+					<pre><code class="language-sh">sheetbase frontend-prerender --only [value] --force [value]</code></pre>
+					<p><strong>Options:</strong></p>
+					<ul>
+						<li><code>-o, --only [value]</code>: Prerender only certain parts.</li>
+						<li><code>-f, --force [value]</code>: Force prerender all or certain parts.</li>
+					</ul>
 					<h4><a name="command-frontend-run"><p><code>run</code></p>
 					</a></h4>
 					<p>Run frontend scripts.</p>
@@ -395,7 +423,8 @@ sheetbase f [subCommand] [params...]</code></pre>
 					</a></h4>
 					<p>Uninstall frontend dependencies.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase frontend uninstall</code></pre>
+					<pre><code class="language-sh">sheetbase frontend uninstall
+sheetbase frontend un</code></pre>
 					<p><strong>Proxy use:</strong></p>
 					<pre><code class="language-sh">sheetbase frontend-uninstall</code></pre>
 					<h3><a name="command-google"><p><code>google</code></p>
@@ -476,8 +505,8 @@ sheetbase n &lt;name&gt; [<span class="hljs-built_in">source</span>] --skip-inst
 					</a></h3>
 					<p>Project related tasks.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase project [subCommand] [params...] --fresh --open --message
-sheetbase p [subCommand] [params...] --fresh --open --message</code></pre>
+					<pre><code class="language-sh">sheetbase project [subCommand] [params...] --fresh --open --message [value]
+sheetbase p [subCommand] [params...] --fresh --open --message [value]</code></pre>
 					<p><strong>Sub-commands:</strong></p>
 					<h4><a name="command-project-build"><p><code>build</code></p>
 					</a></h4>
@@ -499,13 +528,13 @@ sheetbase configs</code></pre>
 					</a></h4>
 					<p>Deploy the project.</p>
 					<p><strong>Usage:</strong></p>
-					<pre><code class="language-sh">sheetbase project deploy --message</code></pre>
+					<pre><code class="language-sh">sheetbase project deploy --message [value]</code></pre>
 					<p><strong>Proxy use:</strong></p>
-					<pre><code class="language-sh">sheetbase project-deploy --message
-sheetbase deploy --message</code></pre>
+					<pre><code class="language-sh">sheetbase project-deploy --message [value]
+sheetbase deploy --message [value]</code></pre>
 					<p><strong>Options:</strong></p>
 					<ul>
-						<li><code>-m, --message</code>: Deployment message.</li>
+						<li><code>-m, --message [value]</code>: Deployment message.</li>
 					</ul>
 					<h4><a name="command-project-info"><p><code>info</code></p>
 					</a></h4>
@@ -579,7 +608,7 @@ sheetbase url &lt;name&gt; --open</code></pre>
 					<p>Update the CLI to the latest version.</p>
 					<p><strong>Usage:</strong></p>
 					<pre><code class="language-sh">sheetbase update --yes --self
-sheetbase up --yes --self</code></pre>
+sheetbase u --yes --self</code></pre>
 					<p><strong>Options:</strong></p>
 					<ul>
 						<li><code>-y, --yes</code>: Do update now.</li>
@@ -590,7 +619,7 @@ sheetbase up --yes --self</code></pre>
 					<p>Display help.</p>
 					<p><strong>Usage:</strong></p>
 					<pre><code class="language-sh">sheetbase <span class="hljs-built_in">help</span> --detail
-sheetbase he --detail</code></pre>
+sheetbase h --detail</code></pre>
 					<p><strong>Options:</strong></p>
 					<ul>
 						<li><code>-d, --detail</code>: Show detail help.</li>
@@ -645,6 +674,9 @@ sheetbase he --detail</code></pre>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/backenduninstallcommand.html" class="tsd-kind-icon">Backend<wbr>Uninstall<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendunknowncommand.html" class="tsd-kind-icon">Backend<wbr>Unknown<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/builtinhook.html" class="tsd-kind-icon">Builtin<wbr>Hook</a>
@@ -714,6 +746,9 @@ sheetbase he --detail</code></pre>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/frontenduninstallcommand.html" class="tsd-kind-icon">Frontend<wbr>Uninstall<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendunknowncommand.html" class="tsd-kind-icon">Frontend<wbr>Unknown<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/googleactivecommand.html" class="tsd-kind-icon">Google<wbr>Active<wbr>Command</a>
@@ -794,6 +829,9 @@ sheetbase he --detail</code></pre>
 						<a href="classes/updatecommand.html" class="tsd-kind-icon">Update<wbr>Command</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/backenddeploycommandoptions.html" class="tsd-kind-icon">Backend<wbr>Deploy<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/databasecommandoptions.html" class="tsd-kind-icon">Database<wbr>Command<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -813,6 +851,15 @@ sheetbase he --detail</code></pre>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/filecreationrequestbody.html" class="tsd-kind-icon">File<wbr>Creation<wbr>Request<wbr>Body</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/frontendcommandoptions.html" class="tsd-kind-icon">Frontend<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/frontenddeploycommandoptions.html" class="tsd-kind-icon">Frontend<wbr>Deploy<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/frontendprerendercommandoptions.html" class="tsd-kind-icon">Frontend<wbr>Prerender<wbr>Command<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/googleaccount.html" class="tsd-kind-icon">Google<wbr>Account</a>
@@ -849,6 +896,9 @@ sheetbase he --detail</code></pre>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/updatecommandoptions.html" class="tsd-kind-icon">Update<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#backendcommandoptions" class="tsd-kind-icon">Backend<wbr>Command<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#commanddef" class="tsd-kind-icon">Command<wbr>Def</a>

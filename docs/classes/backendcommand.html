@@ -97,15 +97,45 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Backend<wbr>Command<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="backendcommand.html" class="tsd-signature-type">BackendCommand</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Backend<wbr>Command<span class="tsd-signature-symbol">(</span>backendLintCommand<span class="tsd-signature-symbol">: </span><a href="backendlintcommand.html" class="tsd-signature-type">BackendLintCommand</a>, backendTestCommand<span class="tsd-signature-symbol">: </span><a href="backendtestcommand.html" class="tsd-signature-type">BackendTestCommand</a>, backendBuildCommand<span class="tsd-signature-symbol">: </span><a href="backendbuildcommand.html" class="tsd-signature-type">BackendBuildCommand</a>, backendPushCommand<span class="tsd-signature-symbol">: </span><a href="backendpushcommand.html" class="tsd-signature-type">BackendPushCommand</a>, backendDeployCommand<span class="tsd-signature-symbol">: </span><a href="backenddeploycommand.html" class="tsd-signature-type">BackendDeployCommand</a>, backendInstallCommand<span class="tsd-signature-symbol">: </span><a href="backendinstallcommand.html" class="tsd-signature-type">BackendInstallCommand</a>, backendUninstallCommand<span class="tsd-signature-symbol">: </span><a href="backenduninstallcommand.html" class="tsd-signature-type">BackendUninstallCommand</a>, backendRunCommand<span class="tsd-signature-symbol">: </span><a href="backendruncommand.html" class="tsd-signature-type">BackendRunCommand</a>, backendUnknownCommand<span class="tsd-signature-symbol">: </span><a href="backendunknowncommand.html" class="tsd-signature-type">BackendUnknownCommand</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="backendcommand.html" class="tsd-signature-type">BackendCommand</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/7b56a41/src/cli/commands/backend.command.ts#L1">cli/commands/backend.command.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/backend.command.ts#L16">cli/commands/backend.command.ts:16</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>backendLintCommand: <a href="backendlintcommand.html" class="tsd-signature-type">BackendLintCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendTestCommand: <a href="backendtestcommand.html" class="tsd-signature-type">BackendTestCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendBuildCommand: <a href="backendbuildcommand.html" class="tsd-signature-type">BackendBuildCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendPushCommand: <a href="backendpushcommand.html" class="tsd-signature-type">BackendPushCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendDeployCommand: <a href="backenddeploycommand.html" class="tsd-signature-type">BackendDeployCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendInstallCommand: <a href="backendinstallcommand.html" class="tsd-signature-type">BackendInstallCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendUninstallCommand: <a href="backenduninstallcommand.html" class="tsd-signature-type">BackendUninstallCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendRunCommand: <a href="backendruncommand.html" class="tsd-signature-type">BackendRunCommand</a></h5>
+								</li>
+								<li>
+									<h5>backendUnknownCommand: <a href="backendunknowncommand.html" class="tsd-signature-type">BackendUnknownCommand</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="backendcommand.html" class="tsd-signature-type">BackendCommand</a></h4>
 						</li>
 					</ul>
@@ -117,13 +147,13 @@
 					<a name="run" class="tsd-anchor"></a>
 					<h3>run</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>subCommand<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>subCommand<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, commandOptions<span class="tsd-signature-symbol">: </span><a href="../globals.html#backendcommandoptions" class="tsd-signature-type">BackendCommandOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/7b56a41/src/cli/commands/backend.command.ts#L4">cli/commands/backend.command.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/backend.command.ts#L29">cli/commands/backend.command.ts:29</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -133,6 +163,9 @@
 								</li>
 								<li>
 									<h5>params: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>commandOptions: <a href="../globals.html#backendcommandoptions" class="tsd-signature-type">BackendCommandOptions</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

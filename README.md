@@ -71,16 +71,16 @@
 
 Official CLI for working with Sheetbase.
 
-- [`sheetbase backend|b [subCommand] [params...]`](#command-backend)
+- [`sheetbase backend|b [subCommand] [params...] --message [value]`](#command-backend)
 - [`sheetbase config|c [subCommand] [params...]`](#command-config)
 - [`sheetbase database|db [subCommand] [params...] --id [value] --remote --data`](#command-database)
 - [`sheetbase docs|d`](#command-docs)
-- [`sheetbase frontend|f [subCommand] [params...]`](#command-frontend)
+- [`sheetbase frontend|f [subCommand] [params...] --message [value] --only [value] --force [value]`](#command-frontend)
 - [`sheetbase google|gg [subCommand] [params...] --yes --creds --full-drive`](#command-google)
 - [`sheetbase new|start|n <name> [source] --skip-install --skip-setup`](#command-new)
 - [`sheetbase project|p [subCommand] [params...] --fresh --open --message [value]`](#command-project)
-- [`sheetbase update|up --yes --self`](#command-update)
-- [`sheetbase help|he --detail`](#command-help)
+- [`sheetbase update|u --yes --self`](#command-update)
+- [`sheetbase help|h --detail`](#command-help)
 - [`sheetbase *`](#command-*)
 
 <h2><a name="cli-command-reference"><p>Command reference</p>
@@ -94,8 +94,8 @@ Backend related tasks.
 **Usage:**
 
 ```sh
-sheetbase backend [subCommand] [params...]
-sheetbase b [subCommand] [params...]
+sheetbase backend [subCommand] [params...] --message [value]
+sheetbase b [subCommand] [params...] --message [value]
 ```
 
 **Sub-commands:**
@@ -125,14 +125,18 @@ Deploy the backend.
 **Usage:**
 
 ```sh
-sheetbase backend deploy
+sheetbase backend deploy --message [value]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase backend-deploy
+sheetbase backend-deploy --message [value]
 ```
+
+**Options:**
+
+- `-m, --message [value]`: Deployment message.
 
 <h4><a name="command-backend-install"><p><code>install</code></p>
 </a></h4>
@@ -143,6 +147,7 @@ Install backend dependencies.
 
 ```sh
 sheetbase backend install
+sheetbase backend i
 ```
 
 **Proxy use:**
@@ -228,6 +233,7 @@ Uninstall backend dependencies.
 
 ```sh
 sheetbase backend uninstall
+sheetbase backend un
 ```
 
 **Proxy use:**
@@ -259,6 +265,7 @@ Export configurations.
 
 ```sh
 sheetbase config export
+sheetbase config ex
 ```
 
 **Proxy use:**
@@ -275,14 +282,19 @@ Import configurations.
 **Usage:**
 
 ```sh
-sheetbase config import
+sheetbase config import <path>
+sheetbase config im <path>
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase config-import
+sheetbase config-import <path>
 ```
+
+**Parameters:**
+
+- `<path>`: Path to .json file.
 
 <h4><a name="command-config-list"><p><code>list</code></p>
 </a></h4>
@@ -293,6 +305,7 @@ List configurations.
 
 ```sh
 sheetbase config list
+sheetbase config ls
 ```
 
 **Proxy use:**
@@ -309,14 +322,19 @@ Update configurations.
 **Usage:**
 
 ```sh
-sheetbase config update
+sheetbase config update [input...]
+sheetbase config set [input...]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase config-update
+sheetbase config-update [input...]
 ```
+
+**Parameters:**
+
+- `[input...]`: List of input.
 
 <h3><a name="command-database"><p><code>database</code></p>
 </a></h3>
@@ -340,19 +358,19 @@ Create tables in the database.
 **Usage:**
 
 ```sh
-sheetbase database create [inputs...] --id [value] --data
-sheetbase database new [inputs...] --id [value] --data
+sheetbase database create [input...] --id [value] --data
+sheetbase database new [input...] --id [value] --data
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase database-create [inputs...] --id [value] --data
+sheetbase database-create [input...] --id [value] --data
 ```
 
 **Parameters:**
 
-- `[inputs...]`: List of table names, ex.: categories posts ...
+- `[input...]`: List of table names, ex.: categories posts ...
 
 **Options:**
 
@@ -459,8 +477,8 @@ Frontend related tasks.
 **Usage:**
 
 ```sh
-sheetbase frontend [subCommand] [params...]
-sheetbase f [subCommand] [params...]
+sheetbase frontend [subCommand] [params...] --message [value] --only [value] --force [value]
+sheetbase f [subCommand] [params...] --message [value] --only [value] --force [value]
 ```
 
 **Sub-commands:**
@@ -490,14 +508,18 @@ Deploy the frontend.
 **Usage:**
 
 ```sh
-sheetbase frontend deploy
+sheetbase frontend deploy --message [value]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase frontend-deploy
+sheetbase frontend-deploy --message [value]
 ```
+
+**Options:**
+
+- `-m, --message [value]`: Deployment message.
 
 <h4><a name="command-frontend-install"><p><code>install</code></p>
 </a></h4>
@@ -508,6 +530,7 @@ Install frontend dependencies.
 
 ```sh
 sheetbase frontend install
+sheetbase frontend i
 ```
 
 **Proxy use:**
@@ -541,14 +564,19 @@ Prerender the frontend.
 **Usage:**
 
 ```sh
-sheetbase frontend prerender
+sheetbase frontend prerender --only [value] --force [value]
 ```
 
 **Proxy use:**
 
 ```sh
-sheetbase frontend-prerender
+sheetbase frontend-prerender --only [value] --force [value]
 ```
+
+**Options:**
+
+- `-o, --only [value]`: Prerender only certain parts.
+- `-f, --force [value]`: Force prerender all or certain parts.
 
 <h4><a name="command-frontend-run"><p><code>run</code></p>
 </a></h4>
@@ -593,6 +621,7 @@ Uninstall frontend dependencies.
 
 ```sh
 sheetbase frontend uninstall
+sheetbase frontend un
 ```
 
 **Proxy use:**
@@ -946,7 +975,7 @@ Update the CLI to the latest version.
 
 ```sh
 sheetbase update --yes --self
-sheetbase up --yes --self
+sheetbase u --yes --self
 ```
 
 **Options:**
@@ -963,7 +992,7 @@ Display help.
 
 ```sh
 sheetbase help --detail
-sheetbase he --detail
+sheetbase h --detail
 ```
 
 **Options:**

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GoogleConnectCommandOptions | @sheetbase/cli</title>
+	<title>FrontendCommandOptions | @sheetbase/cli</title>
 	<meta name="description" content="Documentation for @sheetbase/cli">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="googleconnectcommandoptions.html">GoogleConnectCommandOptions</a>
+					<a href="frontendcommandoptions.html">FrontendCommandOptions</a>
 				</li>
 			</ul>
-			<h1>Interface GoogleConnectCommandOptions</h1>
+			<h1>Interface FrontendCommandOptions</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,15 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">GoogleConnectCommandOptions</span>
+						<a href="frontendprerendercommandoptions.html" class="tsd-signature-type">FrontendPrerenderCommandOptions</a>
+					</li>
+					<li>
+						<a href="frontenddeploycommandoptions.html" class="tsd-signature-type">FrontendDeployCommandOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">FrontendCommandOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -76,46 +84,49 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleconnectcommandoptions.html#creds" class="tsd-kind-icon">creds</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleconnectcommandoptions.html#fulldrive" class="tsd-kind-icon">full<wbr>Drive</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="googleconnectcommandoptions.html#yes" class="tsd-kind-icon">yes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="frontendcommandoptions.html#force" class="tsd-kind-icon">force</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="frontendcommandoptions.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="frontendcommandoptions.html#only" class="tsd-kind-icon">only</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="creds" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> creds</h3>
-					<div class="tsd-signature tsd-kind-icon">creds<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="force" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> force</h3>
+					<div class="tsd-signature tsd-kind-icon">force<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="frontendprerendercommandoptions.html">FrontendPrerenderCommandOptions</a>.<a href="frontendprerendercommandoptions.html#force">force</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/google-connect.command.ts#L3">cli/commands/google-connect.command.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/frontend-prerender.command.ts#L3">cli/commands/frontend-prerender.command.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="fulldrive" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> full<wbr>Drive</h3>
-					<div class="tsd-signature tsd-kind-icon">full<wbr>Drive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="message" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="frontenddeploycommandoptions.html">FrontendDeployCommandOptions</a>.<a href="frontenddeploycommandoptions.html#message">message</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/google-connect.command.ts#L4">cli/commands/google-connect.command.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/frontend-deploy.command.ts#L2">cli/commands/frontend-deploy.command.ts:2</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="yes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> yes</h3>
-					<div class="tsd-signature tsd-kind-icon">yes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="only" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> only</h3>
+					<div class="tsd-signature tsd-kind-icon">only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="frontendprerendercommandoptions.html">FrontendPrerenderCommandOptions</a>.<a href="frontendprerendercommandoptions.html#only">only</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/google-connect.command.ts#L2">cli/commands/google-connect.command.ts:2</a></li>
+							<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/frontend-prerender.command.ts#L2">cli/commands/frontend-prerender.command.ts:2</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -134,16 +145,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="googleconnectcommandoptions.html" class="tsd-kind-icon">Google<wbr>Connect<wbr>Command<wbr>Options</a>
+						<a href="frontendcommandoptions.html" class="tsd-kind-icon">Frontend<wbr>Command<wbr>Options</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="googleconnectcommandoptions.html#creds" class="tsd-kind-icon">creds</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="frontendcommandoptions.html#force" class="tsd-kind-icon">force</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="googleconnectcommandoptions.html#fulldrive" class="tsd-kind-icon">full<wbr>Drive</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="frontendcommandoptions.html#message" class="tsd-kind-icon">message</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="googleconnectcommandoptions.html#yes" class="tsd-kind-icon">yes</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="frontendcommandoptions.html#only" class="tsd-kind-icon">only</a>
 							</li>
 						</ul>
 					</li>
