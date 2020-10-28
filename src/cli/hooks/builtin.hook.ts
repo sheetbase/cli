@@ -73,7 +73,7 @@ export class BuiltinHook {
   }
 
   async driveCreateSheets(name?: string) {
-    return await this.driveCreateFile(
+    return this.driveCreateFile(
       'application/vnd.google-apps.spreadsheet',
       name || `${this.projectCapitalName()} Sheets`
     );

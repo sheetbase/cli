@@ -53,7 +53,7 @@ export class GoogleService {
     };
   }
 
-  async getAllGoogleAccounts() {
+  async getAllAccounts() {
     const googleAccounts = this.configstore.get(
       'google_accounts'
     ) as GoogleAccounts;
@@ -67,29 +67,29 @@ export class GoogleService {
     return googleAccounts;
   }
 
-  async getGoogleAccount(id: string) {
+  async getAccount(id: string) {
     let googleAccount: GoogleAccount;
     if (id) {
-      const googleAccounts = await this.getAllGoogleAccounts();
+      const googleAccounts = await this.getAllAccounts();
       googleAccount = (googleAccounts || {})[id];
     } else {
-      const localAccount = await this.getLocalGoogleAccount();
+      const localAccount = await this.getLocalAccount();
       if (localAccount) {
         googleAccount = localAccount;
       } else {
-        googleAccount = await this.getDefaultGoogleAccount();
+        googleAccount = await this.getDefaultAccount();
       }
     }
     return googleAccount;
   }
 
-  async getDefaultGoogleAccount() {
-    const id = this.getDefaultGoogleAccountId();
-    const googleAccounts = await this.getAllGoogleAccounts();
+  async getDefaultAccount() {
+    const id = this.getDefaultAccountId();
+    const googleAccounts = await this.getAllAccounts();
     return (googleAccounts || {})[id];
   }
 
-  async getLocalGoogleAccount() {
+  async getLocalAccount() {
     let googleAccount: GoogleAccount;
     if (await pathExists(this.googleRcPath)) {
       googleAccount = await readJson(this.googleRcPath);
@@ -99,25 +99,25 @@ export class GoogleService {
     return googleAccount;
   }
 
-  async removeAllGoogleAccounts() {
+  async removeAllAccounts() {
     this.removeTemporaryRefeshToken(); // try remove any not yet retrieve refresh token
     // get all accounts for reporting purpose
-    const disconnectedGoogleAccounts: GoogleAccounts = await this.getAllGoogleAccounts();
+    const disconnectedGoogleAccounts: GoogleAccounts = await this.getAllAccounts();
     // delete all accounts
     this.configstore.delete('google_accounts');
-    this.removeDefaultGoogleAccountId(); // remove default account id
+    this.removeDefaultAccountId(); // remove default account id
     // report
     return disconnectedGoogleAccounts;
   }
 
-  async removeGoogleAccount(id: string) {
+  async removeAccount(id: string) {
     this.removeTemporaryRefeshToken(); // try remove any not yet retrieve refresh token
     // check against default id
-    if (id === this.getDefaultGoogleAccountId()) {
-      return this.removeDefaultGoogleAccount();
+    if (id === this.getDefaultAccountId()) {
+      return this.removeDefaultAccount();
     }
     // get the account for reporting purpose
-    const googleAccount: GoogleAccount = await this.getGoogleAccount(id);
+    const googleAccount: GoogleAccount = await this.getAccount(id);
     if (!id || !googleAccount) {
       throw new Error('Invalid id.');
     }
@@ -129,10 +129,10 @@ export class GoogleService {
     return disconnectedGoogleAccounts;
   }
 
-  async removeDefaultGoogleAccount() {
+  async removeDefaultAccount() {
     this.removeTemporaryRefeshToken(); // try remove any not yet retrieve refresh token
     // get the account for reporting purpose
-    const defaultAccount: GoogleAccount = await this.getDefaultGoogleAccount();
+    const defaultAccount: GoogleAccount = await this.getDefaultAccount();
     if (!defaultAccount) {
       throw new Error('No default google account.');
     }
@@ -140,12 +140,12 @@ export class GoogleService {
     const {id} = defaultAccount.profile;
     this.configstore.delete(`google_accounts.${id}`);
     // try to set default account to the first one found if available
-    const googleAccounts: GoogleAccounts = await this.getAllGoogleAccounts();
+    const googleAccounts: GoogleAccounts = await this.getAllAccounts();
     if (googleAccounts) {
       const [firstId] = Object.keys(googleAccounts);
-      await this.setDefaultGoogleAccountId(firstId);
+      await this.setDefaultAccountId(firstId);
     } else {
-      this.removeDefaultGoogleAccountId();
+      this.removeDefaultAccountId();
     }
     // report
     const disconnectedGoogleAccounts: GoogleAccounts = {};
@@ -153,8 +153,8 @@ export class GoogleService {
     return disconnectedGoogleAccounts;
   }
 
-  async removeLocalGoogleAccount() {
-    const localAccount = await this.getLocalGoogleAccount();
+  async removeLocalAccount() {
+    const localAccount = await this.getLocalAccount();
     if (!localAccount) {
       throw new Error('No local google account.');
     }
@@ -165,13 +165,13 @@ export class GoogleService {
     return disconnectedGoogleAccounts;
   }
 
-  async setGoogleAccount(googleAccount: GoogleAccount) {
+  async setAccount(googleAccount: GoogleAccount) {
     const {id} = googleAccount.profile;
     this.configstore.set(`google_accounts.${id}`, googleAccount);
-    if (!this.getDefaultGoogleAccountId()) {
-      await this.setDefaultGoogleAccountId(id); // set default to this account
+    if (!this.getDefaultAccountId()) {
+      await this.setDefaultAccountId(id); // set default to this account
     }
-    return this.getAllGoogleAccounts();
+    return this.getAllAccounts();
   }
 
   async retrieveTemporaryAccount(fullDrive = false) {
@@ -187,7 +187,7 @@ export class GoogleService {
         grantedAt: new Date().getTime(),
         fullDrive,
       };
-      const accounts = await this.setGoogleAccount(googleAccount);
+      const accounts = await this.setAccount(googleAccount);
       account = accounts[googleAccount.profile.id];
     } else {
       throw new Error('No google refresh token found.');
@@ -195,18 +195,18 @@ export class GoogleService {
     return account;
   }
 
-  getDefaultGoogleAccountId() {
+  getDefaultAccountId() {
     return this.configstore.get('google_accounts_default_id');
   }
 
-  async setDefaultGoogleAccountId(id: string) {
-    const googleAccounts: GoogleAccounts = await this.getAllGoogleAccounts();
+  async setDefaultAccountId(id: string) {
+    const googleAccounts: GoogleAccounts = await this.getAllAccounts();
     if (!(googleAccounts || {})[id]) throw new Error('Invalid id.');
     this.configstore.set('google_accounts_default_id', id);
     return id;
   }
 
-  removeDefaultGoogleAccountId() {
+  removeDefaultAccountId() {
     this.configstore.delete('google_accounts_default_id');
   }
 
@@ -231,8 +231,8 @@ export class GoogleService {
   }
 
   async getOAuth2ClientById(id: string) {
-    id = id || this.getDefaultGoogleAccountId(); // default account
-    const {refreshToken} = await this.getGoogleAccount(id);
+    id = id || this.getDefaultAccountId(); // default account
+    const {refreshToken} = await this.getAccount(id);
     return this.getOAuth2ClientByRefreshToken(refreshToken);
   }
 

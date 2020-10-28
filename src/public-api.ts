@@ -9,6 +9,13 @@ export * from './lib/services/terminal.service';
 export * from './lib/services/message.service';
 export * from './lib/services/drive.service';
 export * from './lib/services/google.service';
+export * from './lib/services/build.service';
+export * from './lib/services/fetch.service';
+export * from './lib/services/file.service';
+export * from './lib/services/gas.service';
+export * from './lib/services/model.service';
+export * from './lib/services/project.service';
+export * from './lib/services/spreadsheet.service';
 
 export * from './cli/commands/unknown.command';
 export * from './cli/commands/docs.command';
