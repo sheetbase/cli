@@ -222,6 +222,11 @@ export class GoogleService {
     this.configstore.delete('google_refresh_token');
   }
 
+  async getDefaultOAuth2Client() {
+    const id = this.getDefaultAccountId(); // default account
+    return this.getOAuth2ClientById(id);
+  }
+
   async getOAuth2Client(id: string, refreshToken: string) {
     if (refreshToken) {
       return this.getOAuth2ClientByRefreshToken(refreshToken);
@@ -231,7 +236,6 @@ export class GoogleService {
   }
 
   async getOAuth2ClientById(id: string) {
-    id = id || this.getDefaultAccountId(); // default account
     const {refreshToken} = await this.getAccount(id);
     return this.getOAuth2ClientByRefreshToken(refreshToken);
   }
