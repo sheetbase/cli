@@ -116,11 +116,11 @@ export class MessageService {
     ) => {
       let message = 'Sheetbase theme project created, next steps:';
       message += EOL + '    + Go to the project: ' + magenta('cd ' + name);
-      if (cmdOptions.notSetup) {
+      if (cmdOptions.skipSetup) {
         message +=
           EOL + '    + Setup automatically: ' + magenta('sheetbase setup');
       }
-      if (!cmdOptions.install) {
+      if (cmdOptions.skipInstall) {
         message +=
           EOL +
           '    + Install packages: ' +
@@ -135,7 +135,7 @@ export class MessageService {
     ) => {
       let message = 'Sheetbase project created, next steps:';
       message += EOL + '    + Go to the project: ' + magenta('cd ' + name);
-      if (!cmdOptions.install) {
+      if (cmdOptions.skipInstall) {
         message += EOL + '    + Install packages: ' + magenta('npm install');
       }
       message += EOL + '    + Great, now start developing :)';
