@@ -198,7 +198,10 @@ export class Cli {
     'View project configs.',
   ];
 
-  projectUrlsCommandDef: CommandDef = ['project-urls', 'View project URLs.'];
+  projectUrlsCommandDef: CommandDef = [
+    ['project-urls', 'urls'],
+    'View project URLs.',
+  ];
 
   /**
    * @param name - The url name.

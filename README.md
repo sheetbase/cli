@@ -964,6 +964,7 @@ sheetbase project urls
 
 ```sh
 sheetbase project-urls
+sheetbase urls
 ```
 
 <h3><a name="command-update"><p><code>update</code></p>
