@@ -294,4 +294,43 @@ export class ProjectService {
   async saveFrontendConfigs(data: {}, customRoot = '.') {
     return this.saveConfigs(this.frontendConfigPath, data, customRoot);
   }
+
+  async buildUrls() {
+    // load all properties
+    const {projectId, urlMaps} = await this.getSheetbaseJson();
+    const {scriptId, projectId: gcpId} = await this.getClaspConfigs();
+    const {backend, frontend} = await this.getConfigs();
+    const properties = {
+      ...backend,
+      ...frontend,
+      projectId,
+      scriptId,
+      gcpId,
+    } as Record<string, unknown>;
+    // load url mapping
+    const allUrlMaps = {
+      ...urlMaps,
+      projectId: ['drive', 'https://drive.google.com/drive/folders/'],
+      scriptId: ['script', 'https://script.google.com/d/', '/edit'],
+      gcpId: [
+        'gcp',
+        'https://console.cloud.google.com/home/dashboard?project=',
+      ],
+      backendUrl: ['backend'],
+    } as Record<string, string[]>;
+    // build urls
+    const urls = {} as Record<string, unknown>;
+    for (const key of Object.keys(properties)) {
+      const map = allUrlMaps[key];
+      if (map) {
+        const value = properties[key];
+        if (value) {
+          const [name, prefix, suffix] = map;
+          urls[name || key] = prefix ? prefix + value + (suffix || '') : value;
+        }
+      }
+    }
+
+    return urls;
+  }
 }

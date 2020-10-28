@@ -1,7 +1,9 @@
-export class ProjectConfigsCommand {
-  constructor() {}
+import {ConfigListCommand} from './config-list.command';
 
-  run() {
-    console.log('TODO: ...');
+export class ProjectConfigsCommand {
+  constructor(private configListCommand: ConfigListCommand) {}
+
+  async run() {
+    this.configListCommand.run();
   }
 }
