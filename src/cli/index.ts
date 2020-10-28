@@ -399,9 +399,18 @@ export class Cli {
       this.cliModule.messageService,
       this.cliModule.googleService
     );
-    this.googleConnectCommand = new GoogleConnectCommand();
-    this.googleDisconnectCommand = new GoogleDisconnectCommand();
-    this.googleActiveCommand = new GoogleActiveCommand();
+    this.googleConnectCommand = new GoogleConnectCommand(
+      this.cliModule.messageService,
+      this.cliModule.googleService
+    );
+    this.googleDisconnectCommand = new GoogleDisconnectCommand(
+      this.cliModule.messageService,
+      this.cliModule.googleService
+    );
+    this.googleActiveCommand = new GoogleActiveCommand(
+      this.cliModule.messageService,
+      this.cliModule.googleService
+    );
     this.googleCommand = new GoogleCommand(
       this.cliModule.helpService,
       this.cliModule.messageService,
@@ -410,17 +419,188 @@ export class Cli {
       this.googleDisconnectCommand,
       this.googleActiveCommand
     );
-    this.newCommand = new NewCommand();
-    this.projectSetupCommand = new ProjectSetupCommand();
-    this.projectConfigsCommand = new ProjectConfigsCommand();
-    this.projectUrlsCommand = new ProjectUrlsCommand();
-    this.projectUrlCommand = new ProjectUrlCommand();
-    this.projectInfoCommand = new ProjectInfoCommand();
-    this.projectLintCommand = new ProjectLintCommand();
-    this.projectTestCommand = new ProjectTestCommand();
-    this.projectBuildCommand = new ProjectBuildCommand();
-    this.projectPreviewCommand = new ProjectPreviewCommand();
-    this.projectDeployCommand = new ProjectDeployCommand();
+    this.newCommand = new NewCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.fileService,
+      this.cliModule.fetchService,
+      this.cliModule.terminalService
+    );
+    this.configListCommand = new ConfigListCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.configUpdateCommand = new ConfigUpdateCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.configImportCommand = new ConfigImportCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.configExportCommand = new ConfigExportCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.configCommand = new ConfigCommand(
+      this.cliModule.messageService,
+      this.cliModule.helpService,
+      this.configListCommand,
+      this.configUpdateCommand,
+      this.configImportCommand,
+      this.configExportCommand
+    );
+    this.backendLintCommand = new BackendLintCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendTestCommand = new BackendTestCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendBuildCommand = new BackendBuildCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendPushCommand = new BackendPushCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.googleService,
+      this.cliModule.gasService
+    );
+    this.backendDeployCommand = new BackendDeployCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.googleService,
+      this.cliModule.gasService
+    );
+    this.backendInstallCommand = new BackendInstallCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendUninstallCommand = new BackendUninstallCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendRunCommand = new BackendRunCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendUnknownCommand = new BackendUnknownCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.backendCommand = new BackendCommand(
+      this.backendLintCommand,
+      this.backendTestCommand,
+      this.backendBuildCommand,
+      this.backendPushCommand,
+      this.backendDeployCommand,
+      this.backendInstallCommand,
+      this.backendUninstallCommand,
+      this.backendRunCommand,
+      this.backendUnknownCommand
+    );
+    this.frontendLintCommand = new FrontendLintCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendTestCommand = new FrontendTestCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendBuildCommand = new FrontendBuildCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.terminalService,
+      this.cliModule.buildService
+    );
+    this.frontendPrerenderCommand = new FrontendPrerenderCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.fileService,
+      this.cliModule.googleService,
+      this.cliModule.buildService
+    );
+    this.frontendDeployCommand = new FrontendDeployCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendInstallCommand = new FrontendInstallCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendUninstallCommand = new FrontendUninstallCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendRunCommand = new FrontendRunCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendUnknownCommand = new FrontendUnknownCommand(
+      this.cliModule.projectService,
+      this.cliModule.terminalService
+    );
+    this.frontendCommand = new FrontendCommand(
+      this.frontendLintCommand,
+      this.frontendTestCommand,
+      this.frontendBuildCommand,
+      this.frontendPrerenderCommand,
+      this.frontendDeployCommand,
+      this.frontendInstallCommand,
+      this.frontendUninstallCommand,
+      this.frontendRunCommand,
+      this.frontendUnknownCommand
+    );
+    this.projectSetupCommand = new ProjectSetupCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService,
+      this.cliModule.googleService,
+      this.cliModule.driveService,
+      this.cliModule.gasService
+    );
+    this.projectConfigsCommand = new ProjectConfigsCommand(
+      this.configListCommand
+    );
+    this.projectUrlsCommand = new ProjectUrlsCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.projectUrlCommand = new ProjectUrlCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.projectInfoCommand = new ProjectInfoCommand(
+      this.cliModule.projectService
+    );
+    this.projectLintCommand = new ProjectLintCommand(
+      this.backendLintCommand,
+      this.frontendLintCommand
+    );
+    this.projectTestCommand = new ProjectTestCommand(
+      this.backendTestCommand,
+      this.frontendTestCommand
+    );
+    this.projectBuildCommand = new ProjectBuildCommand(
+      this.cliModule.messageService,
+      this.backendBuildCommand,
+      this.frontendBuildCommand,
+      this.frontendPrerenderCommand
+    );
+    this.projectPreviewCommand = new ProjectPreviewCommand(
+      this.cliModule.messageService,
+      this.cliModule.projectService
+    );
+    this.projectDeployCommand = new ProjectDeployCommand(
+      this.cliModule.messageService,
+      this.backendDeployCommand,
+      this.frontendDeployCommand
+    );
     this.projectCommand = new ProjectCommand(
       this.cliModule.messageService,
       this.cliModule.helpService,
@@ -435,62 +615,36 @@ export class Cli {
       this.projectPreviewCommand,
       this.projectDeployCommand
     );
-    this.configListCommand = new ConfigListCommand();
-    this.configUpdateCommand = new ConfigUpdateCommand();
-    this.configImportCommand = new ConfigImportCommand();
-    this.configExportCommand = new ConfigExportCommand();
-    this.configCommand = new ConfigCommand(
+    this.databaseListCommand = new DatabaseListCommand(
       this.cliModule.messageService,
-      this.cliModule.helpService,
-      this.configListCommand,
-      this.configUpdateCommand,
-      this.configImportCommand,
-      this.configExportCommand
+      this.cliModule.projectService,
+      this.cliModule.modelService
     );
-    this.backendLintCommand = new BackendLintCommand();
-    this.backendTestCommand = new BackendTestCommand();
-    this.backendBuildCommand = new BackendBuildCommand();
-    this.backendPushCommand = new BackendPushCommand();
-    this.backendDeployCommand = new BackendDeployCommand();
-    this.backendInstallCommand = new BackendInstallCommand();
-    this.backendUninstallCommand = new BackendUninstallCommand();
-    this.backendRunCommand = new BackendRunCommand();
-    this.backendUnknownCommand = new BackendUnknownCommand();
-    this.backendCommand = new BackendCommand(
-      this.backendLintCommand,
-      this.backendTestCommand,
-      this.backendBuildCommand,
-      this.backendPushCommand,
-      this.backendDeployCommand,
-      this.backendInstallCommand,
-      this.backendUninstallCommand,
-      this.backendRunCommand,
-      this.backendUnknownCommand
+    this.databaseCreateCommand = new DatabaseCreateCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.googleService,
+      this.cliModule.spreadsheetService,
+      this.cliModule.projectService,
+      this.cliModule.modelService,
+      this.cliModule.fetchService
     );
-    this.frontendLintCommand = new FrontendLintCommand();
-    this.frontendTestCommand = new FrontendTestCommand();
-    this.frontendBuildCommand = new FrontendBuildCommand();
-    this.frontendPrerenderCommand = new FrontendPrerenderCommand();
-    this.frontendDeployCommand = new FrontendDeployCommand();
-    this.frontendInstallCommand = new FrontendInstallCommand();
-    this.frontendUninstallCommand = new FrontendUninstallCommand();
-    this.frontendRunCommand = new FrontendRunCommand();
-    this.frontendUnknownCommand = new FrontendUnknownCommand();
-    this.frontendCommand = new FrontendCommand(
-      this.frontendLintCommand,
-      this.frontendTestCommand,
-      this.frontendBuildCommand,
-      this.frontendPrerenderCommand,
-      this.frontendDeployCommand,
-      this.frontendInstallCommand,
-      this.frontendUninstallCommand,
-      this.frontendRunCommand,
-      this.frontendUnknownCommand
+    this.databaseImportCommand = new DatabaseImportCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.googleService,
+      this.cliModule.spreadsheetService,
+      this.cliModule.projectService,
+      this.cliModule.modelService,
+      this.cliModule.fetchService
     );
-    this.databaseListCommand = new DatabaseListCommand();
-    this.databaseCreateCommand = new DatabaseCreateCommand();
-    this.databaseImportCommand = new DatabaseImportCommand();
-    this.databaseExportCommand = new DatabaseExportCommand();
+    this.databaseExportCommand = new DatabaseExportCommand(
+      this.cliModule.helperService,
+      this.cliModule.messageService,
+      this.cliModule.googleService,
+      this.cliModule.spreadsheetService,
+      this.cliModule.projectService
+    );
     this.databaseCommand = new DatabaseCommand(
       this.cliModule.messageService,
       this.cliModule.helpService,
@@ -868,7 +1022,9 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.backendInstallCommand.run());
+        .action(options =>
+          this.backendInstallCommand.run(command as string, options)
+        );
     })();
 
     // backend-uninstall
@@ -877,7 +1033,9 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.backendUninstallCommand.run());
+        .action(options =>
+          this.backendUninstallCommand.run(command as string, options)
+        );
     })();
 
     // backend-run
@@ -886,7 +1044,9 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.backendRunCommand.run());
+        .action(options =>
+          this.backendRunCommand.run(command as string, options)
+        );
     })();
 
     // frontend
@@ -969,7 +1129,9 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.frontendInstallCommand.run());
+        .action(options =>
+          this.frontendInstallCommand.run(command as string, options)
+        );
     })();
 
     // frontend-uninstall
@@ -978,7 +1140,9 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.frontendUninstallCommand.run());
+        .action(options =>
+          this.frontendUninstallCommand.run(command as string, options)
+        );
     })();
 
     // frontend-run
@@ -987,7 +1151,9 @@ export class Cli {
       commander
         .command(command as string)
         .description(description)
-        .action(() => this.frontendRunCommand.run());
+        .action(options =>
+          this.frontendRunCommand.run(command as string, options)
+        );
     })();
 
     // database
