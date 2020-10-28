@@ -9,14 +9,30 @@ import {
   FrontendDeployCommand,
   FrontendDeployCommandOptions,
 } from './frontend-deploy.command';
-import {FrontendInstallCommand} from './frontend-install.command';
-import {FrontendUninstallCommand} from './frontend-uninstall.command';
-import {FrontendRunCommand} from './frontend-run.command';
-import {FrontendUnknownCommand} from './frontend-unknown.command';
+import {
+  FrontendInstallCommand,
+  FrontendInstallCommandOptions,
+} from './frontend-install.command';
+import {
+  FrontendUninstallCommand,
+  FrontendUninstallCommandOptions,
+} from './frontend-uninstall.command';
+import {
+  FrontendRunCommand,
+  FrontendRunCommandOptions,
+} from './frontend-run.command';
+import {
+  FrontendUnknownCommand,
+  FrontendUnknownCommandOptions,
+} from './frontend-unknown.command';
 
 interface FrontendCommandOptions
   extends FrontendPrerenderCommandOptions,
-    FrontendDeployCommandOptions {}
+    FrontendDeployCommandOptions,
+    FrontendInstallCommandOptions,
+    FrontendUninstallCommandOptions,
+    FrontendRunCommandOptions,
+    FrontendUnknownCommandOptions {}
 
 export class FrontendCommand {
   constructor(
@@ -54,17 +70,17 @@ export class FrontendCommand {
         break;
       case 'install':
       case 'i':
-        this.frontendInstallCommand.run();
+        this.frontendInstallCommand.run(subCommand, commandOptions);
         break;
       case 'uninstall':
       case 'un':
-        this.frontendUninstallCommand.run();
+        this.frontendUninstallCommand.run(subCommand, commandOptions);
         break;
       case 'run':
-        this.frontendRunCommand.run();
+        this.frontendRunCommand.run(subCommand, commandOptions);
         break;
       default:
-        this.frontendUnknownCommand.run();
+        this.frontendUnknownCommand.run(subCommand, commandOptions);
         break;
     }
   }

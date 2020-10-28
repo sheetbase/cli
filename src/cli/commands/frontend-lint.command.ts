@@ -1,7 +1,13 @@
-export class FrontendLintCommand {
-  constructor() {}
+import {ProjectService} from '../../lib/services/project.service';
+import {TerminalService} from '../../lib/services/terminal.service';
 
-  run() {
-    console.log('TODO: ...');
+export class FrontendLintCommand {
+  constructor(
+    private projectService: ProjectService,
+    private terminalService: TerminalService
+  ) {}
+
+  async run() {
+    this.terminalService.exec('npm run lint', this.projectService.FRONTEND_DIR);
   }
 }
