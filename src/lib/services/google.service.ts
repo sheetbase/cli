@@ -196,7 +196,7 @@ export class GoogleService {
   }
 
   getDefaultAccountId() {
-    return this.configstore.get('google_accounts_default_id');
+    return this.configstore.get('google_accounts_default_id') as string;
   }
 
   async setDefaultAccountId(id: string) {

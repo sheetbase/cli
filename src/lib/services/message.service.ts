@@ -1,13 +1,12 @@
-import {green, red, yellow, magenta, blue, gray} from 'chalk';
 import {EOL} from 'os';
-
-export const ok = `[${green('OK')}]`;
-export const error = `[${red('ERROR')}]`;
-export const warn = `[${yellow('WARNING')}]`;
-export const wait = `[${magenta('WAIT')}]`;
-export const info = `[${blue('INFO')}]`;
+import {green, red, yellow, magenta, blue, gray} from 'chalk';
 
 export class MessageService {
+  private ok = `[${green('OK')}]`;
+  private error = `[${red('ERROR')}]`;
+  private warn = `[${yellow('WARNING')}]`;
+  private wait = `[${magenta('WAIT')}]`;
+  private info = `[${blue('INFO')}]`;
   private errors = {
     BACKEND__ERROR__INVALID: 'No backend found or invalid.',
     DATABASE__ERROR__NO_DATABASE: 'No database found or invalid.',
@@ -168,17 +167,17 @@ export class MessageService {
     }
     // log the message out
     if (type === 'error') {
-      console.error(EOL + ` ${error} ${message}`);
+      console.error(EOL + ` ${this.error} ${message}`);
       // eslint-disable-next-line no-process-exit
       return process.exit(1);
     } else if (type === 'warn') {
-      console.log(EOL + ` ${warn} ${message}`);
+      console.log(EOL + ` ${this.warn} ${message}`);
     } else if (type === 'wait') {
-      console.log(EOL + ` ${wait} ${message}`);
+      console.log(EOL + ` ${this.wait} ${message}`);
     } else if (type === 'info') {
-      console.log(EOL + ` ${info} ${message}`);
+      console.log(EOL + ` ${this.info} ${message}`);
     } else {
-      console.log(EOL + ` ${ok} ${message}`);
+      console.log(EOL + ` ${this.ok} ${message}`);
     }
     // exit = 0
     if (exit) {

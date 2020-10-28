@@ -1,5 +1,9 @@
 import {red} from 'chalk';
 import {prompt} from 'inquirer';
+import {writeJson} from 'fs-extra';
+
+import {MessageService} from '../../lib/services/message.service';
+import {GoogleService} from '../../lib/services/google.service';
 
 export interface GoogleConnectCommandOptions {
   yes?: boolean;
@@ -8,10 +12,36 @@ export interface GoogleConnectCommandOptions {
 }
 
 export class GoogleConnectCommand {
-  constructor() {}
+  constructor(
+    private messageService: MessageService,
+    private googleService: GoogleService
+  ) {}
 
   async run(commandOptions: GoogleConnectCommandOptions) {
-    console.log('TODO: ...');
+    // ask for permission
+    let loginConfirm = 'NO';
+    if (!commandOptions.yes) {
+      const answer = await this.askForGoogleOAuth2();
+      loginConfirm = (answer.loginConfirm || '').toLowerCase();
+    } else {
+      loginConfirm = 'yes';
+    }
+
+    // answer = YES
+    if (['y', 'yes'].includes(loginConfirm)) {
+      // go for authorization
+      await this.googleService.authorizeWithLocalhost(commandOptions.fullDrive);
+      const account = await this.googleService.retrieveTemporaryAccount(
+        commandOptions.fullDrive
+      );
+      // save RC
+      if (commandOptions.creds) {
+        await writeJson('.googlerc.json', account);
+        this.messageService.logWarn('GOOGLE_CONNECT__WARN__CREDS', true);
+      }
+      // done
+      this.messageService.logOk('GOOGLE_CONNECT__OK', true);
+    }
   }
 
   private askForGoogleOAuth2() {
