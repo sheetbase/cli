@@ -97,15 +97,24 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Google<wbr>Disconnect<wbr>Command<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="googledisconnectcommand.html" class="tsd-signature-type">GoogleDisconnectCommand</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Google<wbr>Disconnect<wbr>Command<span class="tsd-signature-symbol">(</span>messageService<span class="tsd-signature-symbol">: </span><a href="messageservice.html" class="tsd-signature-type">MessageService</a>, googleService<span class="tsd-signature-symbol">: </span><a href="googleservice.html" class="tsd-signature-type">GoogleService</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="googledisconnectcommand.html" class="tsd-signature-type">GoogleDisconnectCommand</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/google-disconnect.command.ts#L1">cli/commands/google-disconnect.command.ts:1</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/e7f1e6b/src/cli/commands/google-disconnect.command.ts#L6">src/cli/commands/google-disconnect.command.ts:6</a></li>
 								</ul>
 							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>messageService: <a href="messageservice.html" class="tsd-signature-type">MessageService</a></h5>
+								</li>
+								<li>
+									<h5>googleService: <a href="googleservice.html" class="tsd-signature-type">GoogleService</a></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="googledisconnectcommand.html" class="tsd-signature-type">GoogleDisconnectCommand</a></h4>
 						</li>
 					</ul>
@@ -117,13 +126,13 @@
 					<a name="run" class="tsd-anchor"></a>
 					<h3>run</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"all"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"active"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"local"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"all"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"active"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"local"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/ee4d848/src/cli/commands/google-disconnect.command.ts#L4">cli/commands/google-disconnect.command.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/sheetbase/cli/blob/e7f1e6b/src/cli/commands/google-disconnect.command.ts#L12">src/cli/commands/google-disconnect.command.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,7 +141,7 @@
 									<h5>input: <span class="tsd-signature-type">"all"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"active"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"local"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
