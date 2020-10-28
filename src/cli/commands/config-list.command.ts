@@ -1,7 +1,50 @@
-export class ConfigListCommand {
-  constructor() {}
+import {green} from 'chalk';
+const ttyTable = require('tty-table');
 
-  run() {
-    console.log('TODO: ...');
+import {MessageService} from '../../lib/services/message.service';
+import {ProjectService} from '../../lib/services/project.service';
+
+export class ConfigListCommand {
+  constructor(
+    private messageService: MessageService,
+    private projectService: ProjectService
+  ) {}
+
+  async run() {
+    // load configs
+    const backendConfigs = await this.projectService.getBackendConfigs();
+    const frontendConfigs = await this.projectService.getFrontendConfigs();
+    // print out backend configs
+    if (Object.keys(backendConfigs).length > 0) {
+      const table = ttyTable(
+        [
+          {value: 'Key', width: 100, align: 'left'},
+          {value: 'Value', width: 500, align: 'left'},
+        ],
+        []
+      );
+      for (const key of Object.keys(backendConfigs)) {
+        table.push([key, green(backendConfigs[key] || 'n/a')]);
+      }
+      console.log('\n Backend configurations:');
+      console.log(table.render());
+    }
+    // print out frontend configs
+    if (Object.keys(frontendConfigs).length > 0) {
+      const table = ttyTable(
+        [
+          {value: 'Key', width: 100, align: 'left'},
+          {value: 'Value', width: 500, align: 'left'},
+        ],
+        []
+      );
+      for (const key of Object.keys(frontendConfigs)) {
+        table.push([key, green(frontendConfigs[key] || 'n/a')]);
+      }
+      console.log('\n Frontend configurations:');
+      console.log(table.render());
+    }
+    // done
+    this.messageService.logOk('PROJECT_CONFIGS__OK', true);
   }
 }
