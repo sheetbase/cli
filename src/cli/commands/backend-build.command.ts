@@ -1,5 +1,13 @@
-export class BackendBuildCommand {
-  constructor() {}
+import {ProjectService} from '../../lib/services/project.service';
+import {TerminalService} from '../../lib/services/terminal.service';
 
-  run() {}
+export class BackendBuildCommand {
+  constructor(
+    private projectService: ProjectService,
+    private terminalService: TerminalService
+  ) {}
+
+  async run() {
+    this.terminalService.exec('npm run build', this.projectService.BACKEND_DIR);
+  }
 }

@@ -6,12 +6,29 @@ import {
   BackendDeployCommand,
   BackendDeployCommandOptions,
 } from './backend-deploy.command';
-import {BackendInstallCommand} from './backend-install.command';
-import {BackendUninstallCommand} from './backend-uninstall.command';
-import {BackendRunCommand} from './backend-run.command';
-import {BackendUnknownCommand} from './backend-unknown.command';
+import {
+  BackendInstallCommand,
+  BackendInstallCommandOptions,
+} from './backend-install.command';
+import {
+  BackendUninstallCommand,
+  BackendUninstallCommandOptions,
+} from './backend-uninstall.command';
+import {
+  BackendRunCommand,
+  BackendRunCommandOptions,
+} from './backend-run.command';
+import {
+  BackendUnknownCommand,
+  BackendUnknownCommandOptions,
+} from './backend-unknown.command';
 
-type BackendCommandOptions = BackendDeployCommandOptions;
+interface BackendCommandOptions
+  extends BackendDeployCommandOptions,
+    BackendInstallCommandOptions,
+    BackendUninstallCommandOptions,
+    BackendRunCommandOptions,
+    BackendUnknownCommandOptions {}
 
 export class BackendCommand {
   constructor(
@@ -49,17 +66,17 @@ export class BackendCommand {
         break;
       case 'install':
       case 'i':
-        this.backendInstallCommand.run();
+        this.backendInstallCommand.run(subCommand, commandOptions);
         break;
       case 'uninstall':
       case 'un':
-        this.backendUninstallCommand.run();
+        this.backendUninstallCommand.run(subCommand, commandOptions);
         break;
       case 'run':
-        this.backendRunCommand.run();
+        this.backendRunCommand.run(subCommand, commandOptions);
         break;
       default:
-        this.backendUnknownCommand.run();
+        this.backendUnknownCommand.run(subCommand, commandOptions);
         break;
     }
   }

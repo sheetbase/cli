@@ -80,11 +80,21 @@ export interface ClaspConfigs {
 export class ProjectService {
   private sheetbaseJsonPath = 'sheetbase.json';
   private packageJsonPath = 'package.json';
-  private backendConfigPath = 'backend/src/sheetbase.config.ts';
-  private frontendConfigPath = 'frontend/src/sheetbase.config.ts';
   private claspConfigPath = 'backend/.clasp.json';
+  private backendDir = 'backend';
+  private backendConfigPath = 'backend/src/sheetbase.config.ts';
+  private frontendDir = 'frontend';
+  private frontendConfigPath = 'frontend/src/sheetbase.config.ts';
 
   constructor() {}
+
+  get BACKEND_DIR() {
+    return this.backendDir;
+  }
+
+  get FRONTEND_DIR() {
+    return this.frontendDir;
+  }
 
   async getClaspConfigs(customRoot?: string): Promise<ClaspConfigs> {
     return this.readJson(this.claspConfigPath, customRoot);
